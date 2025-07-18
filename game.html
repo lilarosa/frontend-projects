@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hanzi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Fredoka:wght@300..700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="game.css">
+  <link rel="stylesheet" href="nav.css">
+
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li >
+          <a href="#"><img src="img/Download.svg" class="musicNote"> <audio class="myaudio" ><source src="video/pianos-by-jtwayne-7-174717.mp3"></audio></a>
+          <a href="#" class="blackKey"></a>
+        </li>
+        <li>
+          <a href="homework.html">Aufgabe</a>
+          <a href="#" class="blackKey"></a>
+        </li>
+        <li>
+          <a href="index.html">Startseite</a>
+          <a href="#" class="blackKey"></a>
+        </li>
+        <li>
+          <a href="hanzi.html" >Lektionen</a>
+          <a href="#" class="blackKey"></a>
+        </li>
+        <li >
+          <a href="game.html" class="aktive">Spiele</a>
+        </li>
+        <li>
+          <a href="homework.html">Aufgabe</a>
+          <a href="#" class="blackKey"></a>
+        </li>
+        <li>
+          <a href="feedback.html">Kontakt</a>
+        <a href="#" class="blackKey"></a>
+      </li>
+        <li><a href="about.html">About</a>
+        </li>
+        <li >
+          <a href="#"><img src="img/Download.svg" class="musicOff"></a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Hanzi Spiel</h1>
+    <p>Willkommen zum Hanzi Spiel! Hier kannst du dein Wissen über chinesische Schriftzeichen testen. Beantworte die Fragen und bewege den Frosch über die Schritte. Viel Spaß!</p>
+    
+    <section class="gameArea">
+      <div class="questionArea"></div>
+        <div class="optionArea"></div>
+        <button class="optionBtn" id="startBtn" onclick="showQuestion(),showOptions(),playMusic()">Start</button>
+          
+          
+      
+      <div class="frogArea" border="1">
+        <div class="stepPoint" id="a"></div>
+        <div class="stepPoint" id="b"></div>
+        <div class="stepPoint" id="c"></div>
+        <div class="stepPoint" id="d"></div>
+        <div class="stepPoint" id="e"></div>
+        <div class="stepPoint" id="f"></div>
+        <div class="stepPoint" id="g"></div>
+        <!-- <div class="stepPoint" id="h"></div> -->
+       
+      </div>
+      
+    </section>
+  </main>
+
+  <script>
+    playMusic()
+    musicOn();
+
+    musicOff();
+    function musicOn(){
+      const musicImg=document.querySelector(".musicNote");
+      const musicAudio=document.querySelector(".myaudio");
+      musicImg.addEventListener("click", function()
+       {musicAudio.play();
+        musicAudio.loop=true;
+      });
+    }
+    function musicOff(){
+      const musicAudio=document.querySelector(".myaudio");
+      const musicImageOff=document.querySelector(".musicOff");
+      musicImageOff.addEventListener("click", function(){
+        musicAudio.pause();
+      });
+    }
+    function playMusic(){
+      const musicOnBtn=document.querySelector(".optionBtn");
+      const musicAudio=document.querySelector(".myaudio");
+        musicOnBtn.addEventListener("click",function(){
+          musicAudio.play();
+          musicAudio.loop=true;
+        })
+         };
+
+    
+    
+const quizData = [
+  {
+    question: "“花”这个字的拼音是什么？",
+    options: ["A. huā", "B. huá", "C. huà"],
+    answer: "A"
+  },
+  {
+    question: "下列哪一个是动物？",
+    options: ["A. 桌子", "B. 老虎", "C. 窗户"],
+    answer: "B"
+  },
+  {
+    question: "“妈妈在做饭。”这句话中，谁在做饭？",
+    options: ["A. 爸爸", "B. 妈妈", "C. 姐姐"],
+    answer: "B"
+  },
+  {
+    question: "“小明跑得很快。”这句话的意思是：",
+    options: ["A. 小明走路慢", "B. 小明不跑", "C. 小明跑得快"],
+    answer: "C"
+  },
+  {
+    question: "“天”字一共几笔？",
+    options: ["A. 3笔", "B. 4笔", "C. 5笔"],
+    answer: "B"
+  },
+  {
+    question: "哪一个词是表示颜色的？",
+    options: ["A. 红色", "B. 桌子", "C. 香蕉"],
+    answer: "A"
+  },
+  {
+    question: "“我爱学习。” 这句话的主语是？",
+    options: ["A. 我", "B. 爱", "C. 学习"],
+    answer: "A"
+  },
+  // {
+  //   question: "选出一个正确的句子：",
+  //   options: ["A. 苹果是红。", "B. 小猫可爱。", "C. 跑得很。"],
+  //   answer: "B"
+  // }
+];
+
+let currentQuestionIndex = 0;
+let selectAnswer = "";
+// show Question
+function showQuestion() {
+  const questionArea= document.querySelector(".questionArea");
+  const question= quizData[currentQuestionIndex].question;
+  const questionText= document.createElement("p");
+  const startBtn = document.getElementById("startBtn");
+  questionText.textContent = question;
+  questionArea.innerHTML = ""; // clear previous content
+  questionArea.appendChild(questionText);
+}
+// show Options
+function showOptions(){
+  const optionArea= document.querySelector(".optionArea");
+  const options= quizData[currentQuestionIndex].options;
+  optionArea.innerHTML = ""; // clear previous options
+  // create buttons for each option
+  options.forEach (option => {
+    const optionBtn = document.createElement("button");
+    optionBtn.textContent = option;
+    optionBtn.onclick= function(event){
+      selectAnswer= event.target.textContent.charAt(0); // get the first character (A, B, C)
+      // remove active class from all buttons
+      checkAnswer();}
+      optionArea.appendChild(optionBtn);
+  });
+    
+  };
+
+// check Answer
+function checkAnswer(){
+  const correctAnswer= quizData[currentQuestionIndex].answer;
+  const frogArea = document.querySelector(".frogArea");
+  const stepPoints = document.querySelectorAll(".stepPoint");
+  if (selectAnswer && selectAnswer=== correctAnswer){
+    stepPoints.forEach(point => point.classList.remove("active")); // remove active class from all points
+    stepPoints[currentQuestionIndex].classList.add("active");
+    // move frog to next step
+    if(currentQuestionIndex === stepPoints.length-1 ) {
+
+      //  musicAudio.pause();
+      alert("🎉 Du hast das Spiel gewonnen! 🎉");
+    }
+    
+      else {
+      currentQuestionIndex++;
+       showQuestion();
+       showOptions();
+      } 
+    } 
+
+   else {
+    alert("❌ Falsch! Bitte versuche es noch einmal.");
+  }
+}
+  
+  
+
+  </script>
+</body>
+</html>
