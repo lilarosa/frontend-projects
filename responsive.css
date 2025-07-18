@@ -125,40 +125,6 @@ footer p {
   }
 }
 
-/* Desktop View */
-@media (min-width: 1024px) {
-  aside {
-    float: left;
-    width: 20%;
-    margin-right: 20px;
-  }
-
-  main {
-    width: 75%;
-    float: right;
-  }
-
-  .container::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
