@@ -1,4 +1,4 @@
-🇩🇪 GitHub-Version: IT-Praktikum-freundlich
+ GitHub-Version: IT-Praktikum-freundlich
 Chinesisch Lernportal – Interaktive Webplattform für Kinder
 
 Projektziel:
