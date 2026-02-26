@@ -1,33 +1,48 @@
-# 中文学习平台 | Chinesisch Lernportal
+🇩🇪 GitHub-Version: IT-Praktikum-freundlich
+Chinesisch Lernportal – Interaktive Webplattform für Kinder
 
-👧🧒 一个为儿童设计的互动学习平台，用于学习基础汉字、偏旁部首、拼音和古诗词。  
-🌱 Ein interaktives Lernportal für Kinder zum spielerischen Lernen von chinesischen Schriftzeichen, Pinyin und klassischen Gedichten.  
-🎯 A learning platform for kids to explore Chinese characters, radicals and poems in a playful way.
+Projektziel:
+Eigenständig entwickeltes Lernportal, das Kindern hilft, chinesische Schriftzeichen, Pinyin und klassische Gedichte spielerisch zu lernen. Das Projekt demonstriert meine Frontend- und JavaScript-Fähigkeiten sowie eigenständige Umsetzung von Projektideen.
 
----
+🔹 Problemstellung & Lösung
 
-## ✨ 功能 | Funktionen | Features
+Problem: Kinder lernen chinesische Schriftzeichen oft trocken und unmotiviert, und es fehlen interaktive, visuelle Lernplattformen.
 
-- ✅ 汉字复习：带笔画动画的字卡
-- ✅ 偏旁小游戏：拼组成字，趣味十足
-- ✅ 古诗朗读：每日一句，德中对照
-- ✅ 课表与签到：学生家长可查看
-- ✅ 联系表单：发送反馈信息
+Lösung:
 
----
+Interaktive Lernkarten mit animierten Strichen
 
-## 📂 项目结构 | Projektstruktur
+Radikal-Spiele, die das Verständnis der Zeichen fördern
 
-📁 bilder       - 图片资源
-📁 video        - 朗读音频
-📄 index.html   - 首页
-📄 game.html    - 游戏页
-📄 feedback.html- 联系我们
-📄 all.js       - 脚本功能
-📄 nav.css      - 导航样式
-📄 responsive.css - 响应式设计
+Tägliche klassische Gedichte mit zweisprachiger Anzeige (Deutsch/Chinesisch)
 
----
+Benutzerfreundliche Navigation und responsives Design
+
+Feedback-Funktion für Schüler/Eltern
+
+Dieses Projekt zeigt meine Fähigkeit, UX-orientierte Web-Anwendungen umzusetzen, Probleme zu analysieren und Lösungen eigenständig zu programmieren.
+
+🔹 Technologien & Skills
+
+Frontend: HTML5, CSS3 (responsive Design), JavaScript
+
+Projektorganisation: saubere Ordnerstruktur, Wiederverwendbarkeit von Komponenten
+
+Versionierung: GitHub für Versionskontrolle und Projektmanagement
+
+Interaktivität: Animierte Schriftzeichen, Spielelogik, Formularvalidierung
+
+Selbstständiges Arbeiten: Alle Inhalte und Funktionen von mir konzipiert und umgesetzt
+
+🔹 Projektstruktur
+📁 bilder       - Bildressourcen
+📁 video        - Audio-/Videodateien (Poems)
+📄 index.html   - Startseite
+📄 game.html    - Mini-Spielseite
+📄 feedback.html- Kontaktformular
+📄 all.js       - Interaktive Logik
+📄 nav.css      - Navigationsdesign
+📄 responsive.css - Responsive Layout
 
 ## 📣 作者 | Autorin
 
