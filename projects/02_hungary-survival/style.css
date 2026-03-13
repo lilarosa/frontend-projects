@@ -1,0 +1,100 @@
+:root {
+    --bg-dark: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --accent-red: #ff4757;
+    --accent-blue: #38bdf8;
+    --text-main: #f8fafc;
+}
+
+body {
+    background-color: var(--bg-dark);
+    margin: 0;
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.dashboard-page {
+    padding: 20px;
+    max-width: 500px; /* 适配移动端 */
+    margin: 0 auto;
+}
+
+/* 头部样式 */
+.hero-section {
+    padding: 20px 0;
+}
+.brand h1 { font-size: 24px; margin: 0; font-weight: 800; letter-spacing: -1px; }
+.brand p { font-size: 14px; opacity: 0.6; margin: 5px 0 20px; }
+
+/* 进度条样式 */
+.survival-status-card {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+.status-info {
+    display: flex; justify-content: space-between;
+    font-size: 12px; margin-bottom: 8px;
+}
+.level-tag { color: var(--accent-blue); font-weight: bold; }
+.progress-track { height: 6px; background: #000; border-radius: 10px; overflow: hidden; }
+.progress-fill { 
+    height: 100%; width: 0; 
+    background: linear-gradient(90deg, var(--accent-blue), #818cf8);
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 挂件布局 */
+.widget-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 25px;
+}
+.widget {
+    background: var(--card-bg);
+    padding: 10px;
+    border-radius: 12px;
+    display: flex; flex-direction: column; align-items: center;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+.w-icon { font-size: 20px; margin-bottom: 5px; }
+.w-label { font-size: 10px; opacity: 0.5; }
+.w-val { font-size: 11px; font-weight: bold; white-space: nowrap; }
+.widget.urgent { background: rgba(255, 71, 87, 0.1); border-color: rgba(255, 71, 87, 0.3); }
+
+/* 功能网格 - 这是解决对齐的关键 */
+.module-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+.node-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s, background 0.2s;
+}
+.node-card:active { transform: scale(0.95); background: rgba(255,255,255,0.1); }
+.node-icon { font-size: 32px; margin-bottom: 10px; display: block; }
+.node-card h3 { font-size: 15px; margin: 0; color: #fff; }
+.node-card p { font-size: 11px; margin: 5px 0 0; opacity: 0.5; line-height: 1.4; }
+
+/* 警示样式 */
+.node-card.danger { border-color: rgba(255, 71, 87, 0.3); }
+
+/* 底部拨号区 */
+.dial-section h3 { font-size: 14px; opacity: 0.5; margin-bottom: 12px; text-align: center; }
+.dial-group { display: flex; gap: 10px; }
+.dial-btn {
+    flex: 1; text-decoration: none; color: #fff;
+    background: rgba(255,255,255,0.05);
+    padding: 12px; border-radius: 12px; text-align: center;
+    font-size: 13px; font-weight: bold;
+    border: 1px solid rgba(255,255,255,0.1);
+}

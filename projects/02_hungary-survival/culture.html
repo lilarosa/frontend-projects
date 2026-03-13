@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>既来之，则安之｜人在匈牙利</title>
+  <link rel="stylesheet" href="culture.css">
+</head>
+<body>
+<a href="index.html" class="back-home-btn">
+    <span class="icon">🏠</span>
+    <span class="text">主页</span>
+</a>
+<header class="app-header">
+  <div class="header-content">
+    <h1>既来之，则安之</h1>
+    <p>🇭🇺 人在匈牙利 · 全能安顿指南</p>
+  </div>
+</header>
+
+<main id="content" class="main-content"></main>
+
+<nav class="tab-bar">
+  <button class="tab-btn" id="btn-guide" onclick="renderPage('guide')">
+    <span class="icon">👣</span><span class="txt">新手</span>
+  </button>
+  <button class="tab-btn" id="btn-onboarding" onclick="renderPage('onboarding')">
+    <span class="icon">🚀</span><span class="txt">7天计划</span>
+  </button>
+  <button class="tab-btn" id="btn-housing" onclick="renderPage('housing')">
+    <span class="icon">🏠</span><span class="txt">住房</span>
+  </button>
+  <button class="tab-btn" id="btn-address" onclick="renderPage('address')">
+    <span class="icon">📄</span><span class="txt">地址卡</span>
+  </button>
+</nav>
+
+<script src="data.js"></script>
+<script src="culture.js"></script>
+</body>
+</html>

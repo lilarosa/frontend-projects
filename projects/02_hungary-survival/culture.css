@@ -1,0 +1,102 @@
+:root {
+  --primary: #4a90e2;
+  --secondary: #67809f;
+  --accent: #f39c12;
+  --bg: #f4f7f9;
+  --card: #ffffff;
+}
+
+body { background: var(--bg); margin: 0; font-family: -apple-system, sans-serif; padding-bottom: 80px; }
+
+.app-header {
+  background: linear-gradient(135deg, #2c3e50, #4a90e2);
+  color: white; padding: 40px 20px; text-align: center;
+  border-radius: 0 0 30px 30px; margin-bottom: 20px;
+}
+
+.page-title { border-left: 6px solid var(--primary); padding-left: 15px; margin: 20px; color: #2c3e50; }
+
+/* 7天计划：时间轴样式 */
+.timeline { padding: 10px 20px; }
+.day-box { display: flex; gap: 15px; margin-bottom: 10px; }
+.day-side { display: flex; flex-direction: column; align-items: center; width: 40px; }
+.day-label { background: var(--primary); color: white; padding: 5px 8px; border-radius: 8px; font-size: 12px; font-weight: bold; }
+.line { width: 2px; flex: 1; background: #ddd; margin: 5px 0; }
+.day-main { background: var(--card); flex: 1; padding: 15px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.day-main h3 { margin: 0 0 10px; font-size: 16px; color: #34495e; }
+.day-main ul { padding-left: 18px; margin: 0; color: #7f8c8d; font-size: 14px; }
+.day-tip { font-size: 11px; color: var(--accent); margin-top: 10px; font-weight: 500; }
+
+/* 其他页面：卡片样式 */
+.info-card { background: var(--card); margin: 15px; padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+.info-card h4 { margin: 0 0 15px; color: var(--primary); display: flex; align-items: center; }
+.info-card h4::before { content: '◈'; margin-right: 10px; }
+.info-card ul { padding-left: 15px; margin: 0; list-style: none; }
+.info-card li { margin-bottom: 12px; font-size: 14px; color: #555; line-height: 1.6; position: relative; }
+.info-card li::before { content: '•'; position: absolute; left: -15px; color: var(--primary); }
+
+/* 导航栏 */
+.tab-bar { position: fixed; bottom: 0; width: 100%; display: flex; background: white; padding: 10px 0; border-top: 1px solid #eee; }
+.tab-btn { flex: 1; border: none; background: none; display: flex; flex-direction: column; align-items: center; color: #95a5a6; }
+.tab-btn.active { color: var(--primary); }
+.tab-btn .icon { font-size: 20px; margin-bottom: 4px; }
+.tab-btn .txt { font-size: 11px; }
+
+.fade-in { animation: fadeIn 0.4s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 14px;
+    color: #444;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.task-item input {
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+}
+
+.task-item.done span {
+    text-decoration: line-through;
+    color: #bdc3c7;
+}
+
+.task-group {
+    margin-top: 10px;
+}
+.back-home-btn {
+    position: fixed;    /* 关键：固定定位，不随页面滑动 */
+    top: 15px;         /* 距离顶部距离 */
+    right: 15px;       /* 移到右侧 */
+    z-index: 2001;     /* 确保层级高于弹窗(2000)和内容 */
+    
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 13px;
+    
+    /* 边框和阴影增加质感 */
+    border: 2px solid #2c3e50; 
+    box-shadow: 4px 4px 0px rgba(44, 62, 80, 0.2);
+    transition: all 0.2s ease;
+}
+
+.back-home-btn:active {
+    transform: translate(2px, 2px); /* 点击时的下沉感 */
+    box-shadow: 0px 0px 0px rgba(44, 62, 80, 0.2);
+}
+
+.back-home-btn .icon {
+    margin-right: 4px;
+    font-size: 16px;
+}

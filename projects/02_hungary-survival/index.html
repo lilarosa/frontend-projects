@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>匈牙利求生指南 | Budapest Survival</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 额外补充一点点必要的 widget 样式确保不溢出 */
+        .w-data { min-width: 0; flex: 1; }
+        .w-val { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    </style>
+</head>
+<body>
+
+<main class="dashboard-page">
+    <header class="hero-section">
+        <div class="brand">
+            <h1>匈牙利求生指南</h1>
+            <p>Szia! 既来之，则安之。</p>
+        </div>
+        
+        <div class="survival-status-card">
+            <div class="status-info">
+                <span id="levelName">生存等级：新人小白</span>
+                <span class="level-tag">LV.1</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="widget-row">
+        <div class="widget">
+            <span class="w-icon">🌦️</span>
+            <div class="w-data">
+                <span class="w-label">布达佩斯</span>
+                <span class="w-val" id="weatherTemp">加载中..</span>
+            </div>
+        </div>
+        <div class="widget">
+            <span class="w-icon">💹</span>
+            <div class="w-data">
+                <span class="w-label">CNY/HUF</span>
+                <span class="w-val" id="exchangeRate">1¥ ≈ -- Ft</span>
+            </div>
+        </div>
+        <div class="widget" onclick="showNewTip()">
+            <span class="w-icon">💡</span>
+            <div class="w-data">
+                <span class="w-label">今日贴士</span>
+                <span class="w-val" id="dailyTip" style="font-size: 11px;">点我获取..</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="module-grid">
+        <div class="node-card culture" onclick="location.href='culture.html'">
+            <div class="node-icon">🧍‍♀️</div>
+            <h3>人在匈牙利</h3>
+            <p>落地安顿 · 办证流程</p>
+        </div>
+
+        <div class="node-card language" onclick="location.href='language.html'">
+            <div class="node-icon">🗣️</div>
+            <h3>说点能用的</h3>
+            <p>超市 · 餐厅 · 应急口语</p>
+        </div>
+
+        <div class="node-card rules" onclick="location.href='lifestyle.html'">
+            <div class="node-icon">⚖️</div>
+            <h3>生活管家</h3>
+            <p>法律法规 · 办事流程</p>
+        </div>
+
+        <div class="node-card danger" onclick="location.href='safety.html'">
+            <div class="node-icon">🧨</div>
+            <h3>别踩雷</h3>
+            <p>治安黑点 · 常见骗局</p>
+        </div>
+
+        <div class="node-card health" onclick="location.href='healthcare.html'">
+            <div class="node-icon">🏥</div>
+            <h3>生病怎么办</h3>
+            <p>公立医院 · 私立诊所</p>
+        </div>
+
+        <div class="node-card life" onclick="location.href='leisure.html'">
+            <div class="node-icon">🌿</div>
+            <h3>活着不只上班</h3>
+            <p>周末市集 · 温泉社交</p>
+        </div>
+    </section>
+
+    <footer class="dial-section">
+        <h3>快速联络快捷键</h3>
+        <div class="dial-group">
+            <a href="tel:107" class="dial-btn">👮 报警</a>
+            <a href="tel:104" class="dial-btn">🚑 急救</a>
+            <a href="tel:112" class="dial-btn">🚨 综合</a>
+            <a href="tel:+3614133300" class="dial-btn">🇨🇳 使馆</a>
+        </div>
+    </footer>
+</main>
+
+<script>
+    // 1. 实时数据获取 (带缓存策略)
+    async function fetchRealtimeData() {
+        // 尝试从缓存读取
+        const cachedRate = localStorage.getItem('last_rate');
+        const cachedTemp = localStorage.getItem('last_temp');
+        if(cachedRate) document.getElementById('exchangeRate').innerText = cachedRate;
+        if(cachedTemp) document.getElementById('weatherTemp').innerText = cachedTemp;
+
+        try {
+            // 获取汇率
+            const rateRes = await fetch('https://open.er-api.com/v6/latest/CNY');
+            const rateData = await rateRes.json();
+            const hufRate = `1¥ ≈ ${rateData.rates.HUF.toFixed(1)} Ft`;
+            document.getElementById('exchangeRate').innerText = hufRate;
+            localStorage.setItem('last_rate', hufRate);
+
+            // 获取天气 (wttr 极简接口)
+            const weatherRes = await fetch('https://wttr.in/Budapest?format=%t');
+            const weatherText = await weatherRes.text();
+            const temp = weatherText.replace('+', '');
+            document.getElementById('weatherTemp').innerText = temp;
+            localStorage.setItem('last_temp', temp);
+        } catch (e) {
+            console.error("数据加载失败");
+        }
+    }
+
+    // 2. 今日贴士逻辑
+    const tips = [
+        "周日大部分超市关门早，请提前囤货。",
+        "打票机没打票被查到会罚款 12000+ Ft。",
+        "匈牙利餐厅水不是免费的，点餐前确认。",
+        "看到“Zárva”是关门，“Nyitva”是开门。",
+        "救护车全球通拨 112 反应最快。"
+    ];
+    function showNewTip() {
+        const tipEl = document.getElementById('dailyTip');
+        const randomTip = tips[Math.floor(Math.random() * tips.length)];
+        tipEl.innerText = randomTip;
+    }
+
+    // 3. 进度条与等级逻辑
+    function updateHomeProgress() {
+        const progress = localStorage.getItem('survivalProgress') || 25; // 默认25
+        const fill = document.getElementById('progressFill');
+        const label = document.getElementById('levelName');
+
+        if(fill) {
+            fill.style.width = progress + '%';
+        }
+        
+        if(label) {
+            if(progress > 80) label.innerText = "生存等级：匈牙利老炮";
+            else if(progress > 40) label.innerText = "生存等级：熟练居民";
+            else label.innerText = "生存等级：新人小白";
+        }
+    }
+
+    // 初始化加载
+    window.onload = () => {
+        fetchRealtimeData();
+        showNewTip();
+        updateHomeProgress();
+    };
+
+    // 每次从后台切回前台时刷新
+    window.addEventListener('pageshow', updateHomeProgress);
+</script>
+
+</body>
+</html>

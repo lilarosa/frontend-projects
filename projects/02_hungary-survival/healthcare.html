@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>匈牙利医疗全攻略</title>
+    <link rel="stylesheet" href="healthcare.css">
+</head>
+<body>
+<a href="index.html" class="back-home-btn">
+    <span class="icon">🏠</span>
+    <span class="text">主页</span>
+</a>
+<div class="mindmap-wrapper">
+    <svg class="mindmap-svg">
+    <line x1="50%" y1="50%" x2="50%" y2="18%"></line>
+    <line x1="50%" y1="50%" x2="85%" y2="32%"></line>
+    <line x1="50%" y1="50%" x2="85%" y2="65%"></line>
+    <line x1="50%" y1="50%" x2="50%" y2="78%"></line>
+    <line x1="50%" y1="50%" x2="15%" y2="65%"></line>
+    <line x1="50%" y1="50%" x2="15%" y2="32%"></line>
+</svg>
+
+    <div class="node root">
+        <div class="main-circle">🏥</div>
+        <span>医疗向导</span>
+    </div>
+
+    <div class="node branch n1" onclick="openHealthDetail('emergency')">
+        <div class="icon-box">🚑</div>
+        <div class="label">紧急急诊<br><small>Ügyelet</small></div>
+    </div>
+
+    <div class="node branch n2" onclick="openHealthDetail('pregnancy')">
+        <div class="icon-box">🤰</div>
+        <div class="label">孕妈建档<br><small>Terhesség</small></div>
+    </div>
+
+    <div class="node branch n3" onclick="openHealthDetail('pharmacy')">
+        <div class="icon-box">💊</div>
+        <div class="label">药店买药<br><small>Patika</small></div>
+    </div>
+
+    <div class="node branch n4" onclick="openHealthDetail('specialist')">
+        <div class="icon-box">🦷</div>
+        <div class="label">专科牙科<br><small>Szakrendelés</small></div>
+    </div>
+
+    <div class="node branch n5" onclick="openHealthDetail('newborn')">
+        <div class="icon-box">👶</div>
+        <div class="label">新生儿<br><small>Újszülött</small></div>
+    </div>
+
+    <div class="node branch n6" onclick="openHealthDetail('gp')">
+        <div class="icon-box">👨‍⚕️</div>
+        <div class="label">家庭医生<br><small>Háziorvos</small></div>
+    </div>
+</div>
+
+<div id="healthModal" class="health-modal">
+    <div class="modal-header">
+        <div class="modal-handle"></div>
+        <div class="close-icon" onclick="closeHealthModal()">×</div>
+    </div>
+    <div class="modal-inner" id="healthModalContent"></div>
+</div>
+
+<script src="healthcare.js"></script>
+</body>
+</html>

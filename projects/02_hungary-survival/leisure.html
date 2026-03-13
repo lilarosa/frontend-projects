@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>布达佩斯娱乐大富翁</title>
+    <link rel="stylesheet" href="leisure.css">
+</head>
+<body>
+<a href="index.html" class="back-home-btn btn-bottom">
+    <span class="icon">🏠</span>
+    <span class="text">主页</span>
+</a>
+<div class="game-container">
+    <h1 class="game-title">BUDAPEST FUNPOLY</h1>
+    
+    <div class="monopoly-board">
+        <div class="center-logo">
+            <div class="dice">🎲</div>
+            <p style="font-size:12px; color:#666; font-weight:bold;">探索娱乐点</p>
+        </div>
+
+        <div class="cell" onclick="showLeisureDetail('thermal')">
+            <div class="type-bar yellow"></div>
+            <div class="content"><span>♨️</span>温泉</div>
+        </div>
+        <div class="cell" onclick="showLeisureDetail('winter_sports')">
+            <div class="type-bar blue"></div>
+            <div class="content"><span>⛸️</span>滑冰</div>
+        </div>
+        <div class="cell" onclick="showLeisureDetail('zoo_circus')">
+            <div class="type-bar green"></div>
+            <div class="content"><span>🐘</span>动物园</div>
+        </div>
+
+        <div class="cell" onclick="showLeisureDetail('shopping')" style="grid-row: 2;">
+            <div class="type-bar orange"></div>
+            <div class="content"><span>🛍️</span>商场</div>
+        </div>
+        <div class="cell" onclick="showLeisureDetail('kids_play')" style="grid-row: 2; grid-column: 3;">
+            <div class="type-bar pink"></div>
+            <div class="content"><span>🎡</span>游乐场</div>
+        </div>
+
+        <div class="cell" onclick="showLeisureDetail('museums')" style="grid-row: 3;">
+            <div class="type-bar purple"></div>
+            <div class="content"><span>🎨</span>博物馆</div>
+        </div>
+        <div class="cell" onclick="showLeisureDetail('outside_budapest')" style="grid-row: 3; grid-column: 3;">
+            <div class="type-bar gold"></div>
+            <div class="content"><span>🏰</span>外地景点</div>
+        </div>
+
+        <div class="cell" onclick="showLeisureDetail('nightlife')">
+            <div class="type-bar red"></div>
+            <div class="content"><span>🍺</span>酒吧</div>
+        </div>
+        <div class="cell" onclick="showLeisureDetail('chinese_ent')">
+            <div class="type-bar gold"></div>
+            <div class="content"><span>🎤</span>华人娱乐</div>
+        </div>
+        <div class="cell" style="background:#dfe6e9;">
+            <div class="content"><span>✨</span>敬请期待</div>
+        </div>
+    </div>
+</div>
+
+<div id="healthModal" class="health-modal">
+    <div class="modal-header">
+        <div class="modal-handle"></div>
+        <div class="close-icon" onclick="closeHealthModal()">×</div>
+    </div>
+    <div class="modal-inner">
+        <div id="healthContent"></div>
+    </div>
+</div>
+
+<script src="leisure-data.js"></script>
+<script src="leisure.js"></script>
+</body>
+</html>

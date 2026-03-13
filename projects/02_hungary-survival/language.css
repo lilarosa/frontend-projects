@@ -1,0 +1,226 @@
+:root { --p: #4a90e2; --s: #10b981; --t: #1e293b; --bg: #f8fafc; }
+body { font-family: sans-serif; background: var(--bg); margin: 0; padding-bottom: 50px; }
+
+.dashboard-header { background: #1e293b; color: white; padding: 40px 20px; border-radius: 0 0 25px 25px; }
+.section-block { margin: 25px 15px; }
+.section-title { font-size: 18px; margin-bottom: 15px; }
+
+/* 磁贴与卡片 */
+.vocab-grid {
+    display: flex; /* 改为弹性布局 */
+    overflow-x: auto; /* 开启横向滚动 */
+    overflow-y: hidden;
+    gap: 12px; /* 每个项之间的间距 */
+    padding: 10px 5px 20px 5px; /* 增加底部 padding 防止滚动条遮挡阴影 */
+    -webkit-overflow-scrolling: touch; /* 优化 iOS 滚动手感 */
+    scrollbar-width: none; /* 隐藏火狐滚动条 */
+}
+
+.vocab-grid::-webkit-scrollbar {
+    display: none; /* 隐藏 Chrome/Safari 滚动条，让界面更干净 */
+}
+.vocab-item {
+    flex: 0 0 85px; /* 不放大、不缩小、固定宽度 85px */
+    background: white;
+    padding: 15px 5px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid #f1f2f6;
+}
+.v-icon { font-size: 22px; } .v-label { font-size: 11px; font-weight: bold; }
+
+.feature-card { 
+    background: white; 
+    padding: 18px; 
+    border-radius: 20px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 12px; 
+    border: 1px solid #e2e8f0; 
+    transition: transform 0.2s;
+}
+.feature-card:active { transform: scale(0.98); }
+
+
+.scene-card { background: white; display: flex; align-items: center; padding: 15px; border-radius: 20px; margin-bottom: 10px; }
+.scene-visual { font-size: 24px; margin-right: 15px; width: 50px; height: 50px; background: #eff6ff; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+
+/* 弹窗与积木 */
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 1000; }
+.modal-content { background: white; width: 90%; max-height: 80vh; border-radius: 25px; padding: 25px; overflow-y: auto; }
+
+.formula-card { background: #f8fafc; padding: 15px; border-radius: 15px; margin-bottom: 12px; border: 1px solid #e2e8f0; }
+.brick-row { display: flex; align-items: center; gap: 5px; margin-bottom: 8px; }
+.brick { padding: 6px 12px; border-radius: 8px; color: white; font-weight: bold; font-size: 14px; }
+.brick-a { background: var(--p); box-shadow: 0 3px 0 #357abd; }
+.brick-b { background: var(--s); box-shadow: 0 3px 0 #059669; }
+
+.dialog-item { background: #f1f5f9; padding: 12px; border-radius: 12px; margin-bottom: 10px; border-left: 4px solid var(--p); }
+.dialog-item .hu { font-weight: bold; margin: 0; color: #1e293b; }
+.dialog-item .zh { font-size: 13px; color: #64748b; margin: 5px 0 0; }
+
+.treasure-bubble { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); width: 80%; background: white; padding: 25px; border-radius: 25px; z-index: 2000; transition: 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28); text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.treasure-bubble.active { transform: translate(-50%, -50%) scale(1); }
+.emotion-container { padding: 10px 0; }
+.emotion-card {
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.emotion-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-size: 14px;
+}
+.emo-list { display: flex; flex-direction: column; gap: 10px; }
+.emo-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+}
+.emo-row:last-child { border-bottom: none; }
+.emo-h { font-weight: bold; color: #1e293b; font-size: 16px; }
+.emo-c { color: #64748b; font-size: 13px; text-align: right; }
+.office .scene-visual { background: #fef3c7; } /* 暖咖啡色 */
+.sightseeing .scene-visual { background: #dcfce7; } /* 景点绿 */
+.restaurant .scene-visual { background: #fee2e2; } /* 食欲红 */
+/* 积木卡片布局 */
+.formula-scroll-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 10px;
+}
+
+.formula-card {
+    background: #ffffff;
+    border: 1px solid #eef2f6;
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.formula-number {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 12px;
+    font-weight: 900;
+    color: #e2e8f0;
+}
+
+.brick-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.brick {
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+}
+
+.brick-a { background: #4a90e2; box-shadow: 0 4px 0 #357abd; }
+.brick-b { background: #10b981; box-shadow: 0 4px 0 #059669; }
+.brick-plus { color: #cbd5e1; font-weight: bold; }
+
+.formula-info strong {
+    display: block;
+    font-size: 16px;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.formula-info p {
+    margin: 0;
+    font-size: 13px;
+    color: #64748b;
+    font-style: italic;
+}
+
+.pro-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.pro-tag {
+    background: #fef3c7;
+    color: #d97706;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.back-home-btn {
+    position: fixed;    /* 关键：固定定位，不随页面滑动 */
+    top: 15px;         /* 距离顶部距离 */
+    right: 15px;       /* 移到右侧 */
+    z-index: 2001;     /* 确保层级高于弹窗(2000)和内容 */
+    
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 13px;
+    
+    /* 边框和阴影增加质感 */
+    border: 2px solid #2c3e50; 
+    box-shadow: 4px 4px 0px rgba(44, 62, 80, 0.2);
+    transition: all 0.2s ease;
+}
+
+.back-home-btn:active {
+    transform: translate(2px, 2px); /* 点击时的下沉感 */
+    box-shadow: 0px 0px 0px rgba(44, 62, 80, 0.2);
+}
+
+.back-home-btn .icon {
+    margin-right: 4px;
+    font-size: 16px;
+}
+/* 词条展示动画 */
+.vocab-card.revealed {
+    background: white !important;
+    border-color: #10b981 !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+}
+
+.vocab-card.revealed .zh-word {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.vocab-card.revealed .tap-hint {
+    display: none;
+}
+.vocab-card {
+    /* ...原有样式... */
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 增加回弹感 */
+}
+
+.vocab-card:active {
+    transform: scale(0.95); /* 点击时的按压缩放效果 */
+}
+
+.vocab-card.revealed {
+    transform: scale(1.02);
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* 翻开后阴影加深，更有“浮起”感 */
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>生活办事大管家</title>
+    <link rel="stylesheet" href="lifestyle.css">
+</head>
+<body>
+<a href="index.html" class="back-home-btn">
+    <span class="icon">🏠</span>
+    <span class="text">主页</span>
+</a>
+<div class="container">
+    <header class="page-header">
+        <h1>📊 生活办事管家</h1>
+        <p>流程全公开，办事不求人</p>
+    </header>
+
+    <div class="category-tabs">
+    <button class="tab-btn active" onclick="filterTasks('all')">全部</button>
+    <button class="tab-btn" onclick="filterTasks('admin')">政务</button>
+    <button class="tab-btn" onclick="filterTasks('traffic')">交通</button>
+    <button class="tab-btn" onclick="filterTasks('home')">居家/房产</button>
+    <button class="tab-btn" onclick="filterTasks('tax')">税务</button> 
+</div>
+
+    <div id="taskList" class="task-list">
+        </div>
+</div>
+
+<script src="lifestyle-data.js"></script>
+<script src="lifestyle.js"></script>
+</body>
+</html>

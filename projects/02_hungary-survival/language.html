@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>匈语生存探索</title>
+    <link rel="stylesheet" href="language.css">
+</head>
+<body>
+<a href="index.html" class="back-home-btn">
+    <span class="icon">🏠</span>
+    <span class="text">主页</span>
+</a>
+<div class="app-container">
+    <header class="dashboard-header">
+        <div class="header-content">
+            <h1>匈语生存宝典</h1>
+            <p>点击卡片学习核心场景对话</p>
+        </div>
+    </header>
+
+    <main class="scroll-area">
+        <section class="section-block">
+    <h3 class="section-title">✨ 万能工具词 (左右滑动)</h3>
+    <div class="vocab-grid">
+        <div class="vocab-item" onclick="openTreasure('Nincs', '<b>没有/没/空</b><br>Nincs pénz (没钱)<br>Nincs kaja (没吃的)')">
+            <div class="v-icon">🍾</div><div class="v-label">没有</div>
+        </div>
+        <div class="vocab-item" onclick="openTreasure('Kérek', '<b>我要/请给我</b><br>Kérek vizet (要水)<br>Kérek szatyrot (要袋子)')">
+            <div class="v-icon">🎁</div><div class="v-label">我要</div>
+        </div>
+        <div class="vocab-item" onclick="openTreasure('Hol van?', '<b>在哪？</b><br>Hol van a bolt? (商店在哪？)')">
+            <div class="v-icon">🗝️</div><div class="v-label">在哪</div>
+        </div>
+        <div class="vocab-item" onclick="openTreasure('Kész', '<b>好了/搞定</b><br>Kész! 办完或吃完直接说')">
+            <div class="v-icon">💰</div><div class="v-label">好了</div>
+        </div>
+
+        <div class="vocab-item" onclick="openTreasure('Szia', '<b>你好/再见</b><br>万能招呼，见面再见都能说')">
+            <div class="v-icon">👋</div><div class="v-label">你好</div>
+        </div>
+        <div class="vocab-item" onclick="openTreasure('Köszönöm', '<b>谢谢</b><br>简写: Köszi')">
+            <div class="v-icon">🙏</div><div class="v-label">谢谢</div>
+        </div>
+        <div class="vocab-item" onclick="openTreasure('Igen / Nem', '<b>是 / 不是</b><br>点头Yes，摇头No')">
+            <div class="v-icon">⚖️</div><div class="v-label">是非</div>
+        </div>
+        <div class="vocab-item" onclick="openTreasure('Bocsánat', '<b>对不起/劳驾</b><br>借过或者想引起注意时说')">
+            <div class="v-icon">🙇</div><div class="v-label">抱歉</div>
+        </div>
+        <div class="vocab-item" onclick="openTreasure('Tessék', '<b>给/请/什么事？</b><br>给别人东西或接电话时说')">
+            <div class="v-icon">🤲</div><div class="v-label">给您</div>
+        </div>
+        <div class="vocab-item" onclick="openTreasure('Értem', '<b>明白了</b><br>表示听懂了')">
+            <div class="v-icon">💡</div><div class="v-label">懂了</div>
+        </div>
+
+        <div class="vocab-item" onclick="openTreasure('Mennyi?', '<b>多少钱？</b><br>买东西必备')">
+            <div class="v-icon">🏷️</div><div class="v-label">多少</div>
+        </div>
+        <div class="vocab-item" onclick="openTreasure('Segítség!', '<b>救命/帮帮忙</b><br>紧急情况大喊')">
+            <div class="v-icon">🆘</div><div class="v-label">求助</div>
+        </div>
+        <div class="vocab-item" onclick="openTreasure('Finom', '<b>好吃/美味</b><br>夸奖厨师必备')">
+            <div class="v-icon">😋</div><div class="v-label">好吃</div>
+        </div>
+        <div class="vocab-item" onclick="openTreasure('Most', '<b>现在</b><br>强调立刻马上')">
+            <div class="v-icon">⏰</div><div class="v-label">现在</div>
+        </div>
+        <div class="vocab-item" onclick="openTreasure('Itt / Ott', '<b>这里 / 那里</b><br>指路神器')">
+            <div class="v-icon">📍</div><div class="v-label">方位</div>
+        </div>
+
+        <div class="vocab-item" onclick="openTreasure('Éhes vagyok', '<b>我饿了</b><br>饭馆点餐前戏')">
+            <div class="v-icon">🍽️</div><div class="v-label">我饿</div>
+        </div>
+        <div class="vocab-item" onclick="openTreasure('Számla', '<b>账单</b><br>结账时说: Számlát kérek')">
+            <div class="v-icon">🧾</div><div class="v-label">账单</div>
+        </div>
+        <div class="vocab-item" onclick="openTreasure('Nyitva / Zárva', '<b>营业中 / 已打烊</b><br>看门上的牌子')">
+            <div class="v-icon">🚪</div><div class="v-label">开门</div>
+        </div>
+        <div class="vocab-item" onclick="openTreasure('Ingyen', '<b>免费</b><br>最受欢迎的词')">
+            <div class="v-icon">🆓</div><div class="v-label">免费</div>
+        </div>
+        <div class="vocab-item" onclick="openTreasure('Várj', '<b>稍等</b><br>让对方等一下')">
+            <div class="v-icon">⏳</div><div class="v-label">稍等</div>
+        </div>
+    </div>
+</section>
+
+      <section class="section-block">
+    <h3 class="section-title">🚀 进阶生存策略</h3> 
+    
+    <div class="strategy-list"> <div id="btn-formula" class="feature-card" onclick="handleDetailOpen('语序公式')"> <div class="card-meta"> <span class="badge-tag">公式</span> <h4>永不出错的积木公式</h4>
+            </div>
+            <div class="action-arrow">➔</div> </div>
+
+        <div id="btn-emotion" class="feature-card" onclick="handleDetailOpen('情绪表达')">
+            <div class="card-meta">
+                <span class="badge-tag">地道</span>
+                <h4>情绪/同意的5种等级</h4>
+            </div>
+            <div class="action-arrow">➔</div>
+        </div>
+
+        <div id="btn-vocab300" class="feature-card" onclick="handleDetailOpen('300词')">
+            <div class="card-meta">
+                <span class="badge-tag">高频</span>
+                <h4>核心生存 300 词</h4>
+            </div>
+            <div class="action-arrow">➔</div>
+        </div>
+    </div>
+</section>
+        <section class="section-block">
+            <h3 class="section-title">🗺️ 实用场景模拟</h3>
+            <div class="scene-stack">
+            <div class="scene-card office" onclick="showScene('office')">
+    <div class="scene-visual">☕</div>
+    <div class="scene-text">
+        <h4>同事闲聊 (Small Talk)</h4>
+        <p>问候、午饭、下班、周末</p>
+    </div>
+    <div class="go-icon">→</div>
+</div>
+
+<div class="scene-card sightseeing" onclick="showScene('sightseeing')">
+    <div class="scene-visual">🎟️</div>
+    <div class="scene-text">
+        <h4>景点购票 (Jegy)</h4>
+        <p>票价、学生优惠、拍照限制</p>
+    </div>
+    <div class="go-icon">→</div>
+</div>
+
+<div class="scene-card restaurant" onclick="showScene('restaurant')">
+    <div class="scene-visual">🍽️</div>
+    <div class="scene-text">
+        <h4>餐厅点餐 (Étterem)</h4>
+        <p>订位、推荐、口味、结账</p>
+    </div>
+    <div class="go-icon">→</div>
+</div>
+                <div class="scene-card oif" onclick="showScene('oif')">
+                    <div class="scene-visual">🏛️</div>
+                    <div class="scene-text"><h4>移民局 (OIF)</h4><p>居留、地址报备</p></div>
+                    <div class="go-icon">→</div>
+                </div>
+                <div class="scene-card doctor" onclick="showScene('doctor')">
+                    <div class="scene-visual">🏥</div>
+                    <div class="scene-text"><h4>看医生 (Orvos)</h4><p>预约、描述症状</p></div>
+                    <div class="go-icon">→</div>
+                </div>
+                <div class="scene-card market" onclick="showScene('market')">
+                    <div class="scene-visual">🛒</div>
+                    <div class="scene-text"><h4>超市市场 (Bolt)</h4><p>结账、称重</p></div>
+                    <div class="go-icon">→</div>
+                </div>
+            </div>
+            <div class="scene-card housing" onclick="showScene('housing')">
+    <div class="scene-visual">🏠</div>
+    <div class="scene-text"><h4>房东与邻居</h4><p>维修、漏水、噪音投诉</p></div>
+    <div class="go-icon">→</div>
+</div>
+
+<div class="scene-card conflict" onclick="showScene('conflict')">
+    <div class="scene-visual">👊</div>
+    <div class="scene-text"><h4>维权还击</h4><p>应对歧视、录像、报警</p></div>
+    <div class="go-icon">→</div>
+</div>
+
+<div class="scene-card school" onclick="showScene('school')">
+    <div class="scene-visual">🏫</div>
+    <div class="scene-text"><h4>校园沟通</h4><p>接送孩子、请假、老师交流</p></div>
+    <div class="go-icon">→</div>
+</div>
+
+<div class="scene-card emergency" onclick="showScene('emergency')">
+    <div class="scene-visual">🚨</div>
+    <div class="scene-text"><h4>紧急维权</h4><p>警察事故、银行挂失</p></div>
+    <div class="go-icon">→</div>
+</div>
+
+<div class="scene-card shopping_pro" onclick="showScene('shopping_pro')">
+    <div class="scene-visual">⚖️</div>
+    <div class="scene-text"><h4>超市维权</h4><p>价格不对、投诉簿、退款</p></div>
+    <div class="go-icon">→</div>
+</div>
+        </section>
+    </main>
+</div>
+
+<div id="treasureBubble" class="treasure-bubble">
+    <div id="bubbleTitle" class="bubble-title"></div>
+    <div id="bubbleText" class="bubble-text"></div>
+    <button class="bubble-close" onclick="closeTreasure()">知道了</button>
+</div>
+
+<div id="studyModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div id="modalContent"></div>
+    </div>
+</div>
+
+<script src="language_data.js"></script>
+<script src="language.js"></script>
+</body>
+</html>

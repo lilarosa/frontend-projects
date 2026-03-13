@@ -1,0 +1,99 @@
+body, html {
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    background: #f0f7f7;
+    font-family: -apple-system, sans-serif;
+    overflow: hidden;
+}
+
+.mindmap-wrapper { position: relative; 
+    width: 100vw; 
+    /* 修复点1：使用 85vh 腾出底部空间，或者用 calc 减去底栏高度 */
+    height: 85vh; 
+    /* 修复点2：如果还是靠下，可以给一个负的 margin-top 或者 padding */
+    margin-top: -5vh; }
+.mindmap-svg { position: absolute; width: 100%; height: 100%; z-index: 1; }
+.mindmap-svg line { stroke: #b2bec3; stroke-width: 2; stroke-dasharray: 4; }
+
+.node { position: absolute; z-index: 10; transform: translate(-50%, -50%); text-align: center; cursor: pointer; }
+.root { top: 50%; left: 50%; }
+.main-circle {
+    width: 80px; height: 80px; background: #00b894; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 35px; box-shadow: 0 0 20px rgba(0, 184, 148, 0.4); border: 4px solid white;
+}
+.root span { display: block; margin-top: 8px; font-weight: bold; font-size: 14px; }
+
+.branch .icon-box {
+    width: 60px; height: 60px; background: white; border-radius: 18px;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 28px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 2px solid #00b894;
+}
+.branch .label { margin-top: 5px; font-size: 12px; font-weight: bold; color: #2d3436; line-height: 1.2; }
+.branch small { font-size: 9px; color: #636e72; display: block; }
+
+/* 六个方向的精确坐标 */
+.n1 { top: 18%; left: 50%; } /* 原 15% -> 改 18%，稍微往下挪 */
+.n2 { top: 32%; left: 85%; } /* 原 30% -> 改 32% */
+.n3 { top: 65%; left: 85%; } /* 原 70% -> 改 65%，右下往上提 */
+.n4 { top: 80%; left: 50%; } /* 原 85% -> 改 80%，正下往上提 */
+.n5 { top: 65%; left: 15%; } /* 原 70% -> 改 65%，左下往上提 */
+.n6 { top: 32%; left: 15%; } /* 原 30% -> 改 32% */
+
+/* 弹窗样式 */
+.health-modal {
+    position: fixed; bottom: -100%; left: 0; width: 100%; height: 85%;
+    background: white; z-index: 2000; border-radius: 30px 30px 0 0;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.15); transition: bottom 0.4s ease;
+    display: flex; flex-direction: column;
+}
+.health-modal.active { bottom: 0; }
+.modal-header { padding: 15px; display: flex; justify-content: center; position: relative; border-bottom: 1px solid #f1f5f9; }
+.modal-handle { width: 40px; height: 5px; background: #e2e8f0; border-radius: 10px; }
+.close-icon { position: absolute; right: 20px; font-size: 28px; color: #94a3b8; cursor: pointer; top: 5px; }
+.modal-inner { flex: 1; overflow-y: auto; padding: 20px; }
+
+/* 内容详情样式 */
+.detail-title { color: #1e293b; margin-bottom: 15px; }
+.docs-box { background: #f1f5f9; padding: 15px; border-radius: 15px; margin-bottom: 20px; border-left: 4px solid #00b894; }
+.docs-box p { margin: 0 0 8px 0; font-weight: bold; color: #475569; }
+.docs-box ul { margin: 0; padding-left: 20px; }
+.guide-box { background: #eff6ff; padding: 15px; border-radius: 15px; color: #1d4ed8; font-size: 14px; margin-bottom: 20px; }
+.section-label { display: flex; align-items: center; margin: 20px 0 10px; color: #1e293b; }
+.section-label span { width: 4px; height: 16px; background: #00b894; margin-right: 8px; border-radius: 2px; }
+.phrase-grid { display: grid; gap: 10px; }
+.phrase-card { background: #f8fafc; padding: 12px; border-radius: 12px; border: 1px solid #e2e8f0; }
+.phrase-card .hu { font-weight: bold; color: #1e293b; }
+.phrase-card .zh { color: #64748b; font-size: 13px; margin-top: 4px; }
+.tips-box { margin-top: 25px; padding: 15px; background: #fffbeb; border-radius: 12px; color: #b45309; font-size: 13px; }
+.back-home-btn {
+    position: fixed;    /* 关键：固定定位，不随页面滑动 */
+    top: 15px;         /* 距离顶部距离 */
+    right: 15px;       /* 移到右侧 */
+    z-index: 2001;     /* 确保层级高于弹窗(2000)和内容 */
+    
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 13px;
+    
+    /* 边框和阴影增加质感 */
+    border: 2px solid #2c3e50; 
+    box-shadow: 4px 4px 0px rgba(44, 62, 80, 0.2);
+    transition: all 0.2s ease;
+}
+
+.back-home-btn:active {
+    transform: translate(2px, 2px); /* 点击时的下沉感 */
+    box-shadow: 0px 0px 0px rgba(44, 62, 80, 0.2);
+}
+
+.back-home-btn .icon {
+    margin-right: 4px;
+    font-size: 16px;
+}
