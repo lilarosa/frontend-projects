@@ -2,12 +2,15 @@
 
 ## DE: Projektueberblick
 Sammlung von Frontend-Uebungen mit Schwerpunkt auf HTML, CSS und JavaScript.
-Aktuell steht das Lernportal "Chinesisch lernen" im Fokus.
+Das Lernportal "Chinesisch lernen" ist das Hauptprojekt und liegt unter `projects/chinesisch-lernen/`.
 
 ## DE: Hauptinhalte
-- `index.html`, `hanzi.html`, `game.html`, `feedback.html`
-- `all.js`, `nav.css`, `responsive.css`
-- Medienordner: `img/`, `bilder/`, `video/`
+- Hauptprojekt: `projects/chinesisch-lernen/`
+- Seiten: `index.html`, `hanzi.html`, `game.html`, `feedback.html`
+- Assets: `img/`, `bilder/`, `video/`
+
+## DE: Demo
+- https://lilarosa.github.io/frontend-projects/
 
 ## DE: Lernziele
 - Strukturierte Frontend-Ordnerorganisation
@@ -16,12 +19,15 @@ Aktuell steht das Lernportal "Chinesisch lernen" im Fokus.
 
 ## EN: Overview
 Collection of frontend exercises focused on HTML, CSS, and JavaScript.
-Current focus: the "Chinesisch lernen" learning portal.
+Main project: "Chinesisch lernen" located under `projects/chinesisch-lernen/`.
 
 ## EN: Main Content
+- Project path: `projects/chinesisch-lernen/`
 - Multi-page static frontend application
 - Vanilla JS interaction logic
-- Responsive styling and media assets
+
+## EN: Demo
+- https://lilarosa.github.io/frontend-projects/
 
 ## EN: Next Step
 Refactor into modular components and add basic automated checks.
