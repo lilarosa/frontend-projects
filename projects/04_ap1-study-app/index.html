@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AP1 Study App | Stuttgart IT</title>
+  <meta name="description" content="AP1-Pruefungsvorbereitung fuer Stuttgart IT: Module, Wochenplan, Quiz und Checklisten.">
+  <meta name="theme-color" content="#0f3d2e">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="page.css">
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div class="hero__meta">
+        <p class="tag">AP1 Stuttgart IT</p>
+        <h1>AP1 Study App</h1>
+        <p class="lead">Alle Module der AP1 strukturiert: SQL, Java, UML, Testing, Netzwerke, Betriebssysteme.</p>
+        <div class="hero__actions">
+          <button class="btn btn--primary" data-target="modules">Module anzeigen</button>
+          <button class="btn btn--ghost" data-target="planner">Wochenplan</button>
+        </div>
+      </div>
+      <div class="hero__card">
+        <h2>Heute</h2>
+        <ul>
+          <li><span>SQL</span><strong>SELECT + JOIN</strong></li>
+          <li><span>Java</span><strong>Arrays + Strings</strong></li>
+          <li><span>Netzwerk</span><strong>Subnetting Basics</strong></li>
+        </ul>
+        <p class="muted">Status: 2/3 erledigt</p>
+      </div>
+    </header>
+
+    <section id="modules" class="section">
+      <div class="section__head">
+        <h2>AP1 Module</h2>
+        <p>Fokus auf die Inhalte der AP1-Pruefung. Jede Karte fuehrt zu Uebungen, Cheatsheets und Aufgaben.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>SQL & Datenbanken</h3>
+          <p>SELECT, JOIN, Aggregation, CRUD, Normalformen.</p>
+          <div class="pill">SQL</div>
+        </article>
+        <article class="card">
+          <h3>Java Grundlagen</h3>
+          <p>Kontrollfluss, Methoden, Arrays, OOP, Fehlerbehandlung.</p>
+          <div class="pill">Java</div>
+        </article>
+        <article class="card">
+          <h3>UML & Modellierung</h3>
+          <p>Use Case, Klassendiagramm, Beziehungen, Notation.</p>
+          <div class="pill">UML</div>
+        </article>
+        <article class="card">
+          <h3>Testen & Qualitaet</h3>
+          <p>Testfaelle, Grenzwerte, Blackbox/Whitebox Basics.</p>
+          <div class="pill">Testing</div>
+        </article>
+        <article class="card">
+          <h3>Netzwerke</h3>
+          <p>OSI, IP, Subnetting, DHCP, DNS, HTTP.</p>
+          <div class="pill">Network</div>
+        </article>
+        <article class="card">
+          <h3>Betriebssysteme & Linux</h3>
+          <p>Dateirechte, Prozesse, Shell, Basics DevOps.</p>
+          <div class="pill">OS</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="planner" class="section alt">
+      <div class="section__head">
+        <h2>Wochenplan</h2>
+        <p>Plane 5 Tage aktiv + 2 Tage Wiederholung. Checke Aufgaben direkt ab.</p>
+      </div>
+      <div class="planner">
+        <div class="day">
+          <h4>Montag</h4>
+          <ul>
+            <li><input type="checkbox"> SQL SELECT + WHERE</li>
+            <li><input type="checkbox"> JOIN Basics</li>
+          </ul>
+        </div>
+        <div class="day">
+          <h4>Dienstag</h4>
+          <ul>
+            <li><input type="checkbox"> Java Arrays</li>
+            <li><input type="checkbox"> String Aufgaben</li>
+          </ul>
+        </div>
+        <div class="day">
+          <h4>Mittwoch</h4>
+          <ul>
+            <li><input type="checkbox"> UML Use Case</li>
+            <li><input type="checkbox"> Klassendiagramm</li>
+          </ul>
+        </div>
+        <div class="day">
+          <h4>Donnerstag</h4>
+          <ul>
+            <li><input type="checkbox"> Testfaelle & Grenzwerte</li>
+            <li><input type="checkbox"> Fehlerklassen</li>
+          </ul>
+        </div>
+        <div class="day">
+          <h4>Freitag</h4>
+          <ul>
+            <li><input type="checkbox"> IP + Subnetting</li>
+            <li><input type="checkbox"> DHCP / DNS</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section__head">
+        <h2>Quick Quiz</h2>
+        <p>3 Fragen als Warm-up. Nutze es vor jeder Session.</p>
+      </div>
+      <div class="quiz">
+        <div class="quiz__item">
+          <p>1) Was bedeutet JOIN in SQL?</p>
+          <button class="answer">Tabellen verbinden</button>
+          <button class="answer">Daten loeschen</button>
+        </div>
+        <div class="quiz__item">
+          <p>2) Was beschreibt die UML-Klasse?</p>
+          <button class="answer">Struktur/Attribute/Methoden</button>
+          <button class="answer">Nur Benutzerrechte</button>
+        </div>
+        <div class="quiz__item">
+          <p>3) Wofuer steht DHCP?</p>
+          <button class="answer">Dynamic Host Configuration Protocol</button>
+          <button class="answer">Data Hosting Control Process</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>AP1 Study App | Stuttgart IT | 2026</p>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
