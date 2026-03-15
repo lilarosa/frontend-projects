@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CareU Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="page.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+    <div class="screen">
+  <!-- 首页 -->      
+        <div id="homePage" class="page">
+        <h1 id="greeting">CareU</h1>
+        <p id="time">当前时间：</p>
+        <p id="reminder">提醒：记得按时服药！</p>
+        <button class="button daughter" onclick="callDaughter()">
+            <img src="D.JPG" class="avatar"> 👧 打给女儿
+        </button>
+        <button class="button son" onclick="callSon()">
+            <img src="S.JPG" class="avatar"> 👦 打给儿子
+        </button>
+        <button class="button helper" onclick="callHelper()">呼叫求助
+        </button>
+        <p id="status">请选择一个操作</p>
+        </div>
+<!-- 任务页面 -->      
+        <div id="taskPage" class="page hidden">
+            <h2>任务页面</h2>
+            <ul id="taskList">
+                <li onclick="toggleTask(this)" data-start="7" data-end="9">🌞吃早药☁️</li>
+                <li onclick="toggleTask(this)" data-start="9" data-end="11">🥛吃早饭🍞</li>
+                <li onclick="toggleTask(this)" data-start="11" data-end="12">🧑‍⚕️吃午药💊</li>
+                <li onclick="toggleTask(this)" data-start="12" data-end="14">🥬吃午饭🍗</li>
+                <li onclick="toggleTask(this)" data-start="14" data-end="16">🏥吃午后药💊</li>
+                <li onclick="toggleTask(this)" data-start="16" data-end="18">💐散步午休📺</li>
+                <li onclick="toggleTask(this)" data-start="18" data-end="20">🥩吃晚饭🍚</li>
+                <li onclick="toggleTask(this)" data-start="20" data-end="22">🌙吃晚药💊</li>
+                <li onclick="toggleTask(this)" data-start="22" data-end="24">🛀刷牙🪥</li>
+                <li onclick="toggleTask(this)" data-start="0" data-end="7">✨睡觉晚安🪟</li>
+
+            </ul>
+        </div>
+<!--新闻页面 -->
+        <div id="newsPage" class="page hidden">
+            <h2>今日内容</h2>
+
+<img id="dailyImage" class="daily-image">
+
+<h3 id="dailyTitle">新闻标题</h3>
+
+<p id="dailyText">新闻内容</p>
+
+<div class = speech-controls>
+<button  onclick="readDaily()">🔊 朗读</button>
+<button  onclick="togglePause()">暂停</button>
+<button  onclick="speechSynthesis.cancel()">停止</button>
+</div>
+
+<div class="daily-nav">
+
+<button onclick="prevDaily()">⬅ 上一条</button>
+
+<button onclick="nextDaily()">下一条 ➡</button>
+
+</div>
+
+</div>
+
+<!-- 导航栏 -->
+        <div class="navbar">
+            <button onclick="showPage('homePage')">首页</button>
+            <button onclick="showPage('taskPage')">任务</button>
+            <button onclick="showPage('newsPage')">新闻</button>
+        </div>
+        </div>
+
+    </div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

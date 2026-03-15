@@ -1,0 +1,17 @@
+{
+    "name": "careU",
+    "short_name": "careU",
+    "description": "A care service app for elderly people",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#4CAF50",
+    "icons": [
+        {
+            "src": "./assets/icons/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+        
+   ]
+}   
