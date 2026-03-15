@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CareU Project | English</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../page.css">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+    <div class="screen">
+        <div class="page">
+            <div style="text-align:right; padding:10px 20px;">
+                <a href="../index.html">中文</a>
+            </div>
+        </div>
+        <div id="homePage" class="page">
+            <h1 id="greeting">CareU</h1>
+            <p id="time">Current time:</p>
+            <p id="reminder">Reminder: take your medicine on time.</p>
+            <button class="button daughter" onclick="callDaughter()">
+                <img src="../D.JPG" class="avatar"> Call daughter
+            </button>
+            <button class="button son" onclick="callSon()">
+                <img src="../S.JPG" class="avatar"> Call son
+            </button>
+            <button class="button helper" onclick="callHelper()">Emergency help</button>
+            <p id="status">Please choose an action</p>
+        </div>
+
+        <div id="taskPage" class="page hidden">
+            <h2>Tasks</h2>
+            <ul id="taskList">
+                <li onclick="toggleTask(this)" data-start="7" data-end="9">Morning medicine</li>
+                <li onclick="toggleTask(this)" data-start="9" data-end="11">Breakfast</li>
+                <li onclick="toggleTask(this)" data-start="11" data-end="12">Noon medicine</li>
+                <li onclick="toggleTask(this)" data-start="12" data-end="14">Lunch</li>
+                <li onclick="toggleTask(this)" data-start="14" data-end="16">Afternoon medicine</li>
+                <li onclick="toggleTask(this)" data-start="16" data-end="18">Walk & rest</li>
+                <li onclick="toggleTask(this)" data-start="18" data-end="20">Dinner</li>
+                <li onclick="toggleTask(this)" data-start="20" data-end="22">Night medicine</li>
+                <li onclick="toggleTask(this)" data-start="22" data-end="24">Brush teeth</li>
+                <li onclick="toggleTask(this)" data-start="0" data-end="7">Sleep</li>
+            </ul>
+        </div>
+
+        <div id="newsPage" class="page hidden">
+            <h2>Daily Reading</h2>
+            <img id="dailyImage" class="daily-image">
+            <h3 id="dailyTitle">Title</h3>
+            <p id="dailyText">Content</p>
+            <div class="speech-controls">
+                <button onclick="readDaily()">Read</button>
+                <button onclick="togglePause()">Pause</button>
+                <button onclick="speechSynthesis.cancel()">Stop</button>
+            </div>
+            <div class="daily-nav">
+                <button onclick="prevDaily()">Prev</button>
+                <button onclick="nextDaily()">Next</button>
+            </div>
+        </div>
+
+        <div class="navbar">
+            <button onclick="showPage('homePage')">Home</button>
+            <button onclick="showPage('taskPage')">Tasks</button>
+            <button onclick="showPage('newsPage')">Daily</button>
+        </div>
+    </div>
+
+    <script src="app-en.js"></script>
+</body>
+</html>
