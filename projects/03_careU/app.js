@@ -56,20 +56,25 @@ function updateTime(){
     }
 
     // 页面导航
-    function showPage(pageId) {
-        const pages = document.querySelectorAll(".page");
-        pages.forEach(page => {
-            if (page.id === pageId) {
-                page.classList.remove("hidden");
-            } else {
-                page.classList.add("hidden");
-            }
-            if (pageId === "taskPage") {
-                highlightCurrentTask();
-                setTimeout(scrollToCurrentTask, 300);
-            }
-        });
+function showPage(pageId) {
+    const pages = document.querySelectorAll(".page");
+    pages.forEach(page => {
+        if (page.id === pageId) {
+            page.classList.remove("hidden");
+        } else {
+            page.classList.add("hidden");
+        }
+        if (pageId === "taskPage") {
+            highlightCurrentTask();
+            setTimeout(scrollToCurrentTask, 300);
+        }
+    });
+    if (pageId === "gamePage") {
+        if (!gameInitialized) {
+            initGame();
+        }
     }
+}
 
     // 滚动到当前任务
     function scrollToCurrentTask() {
@@ -475,3 +480,107 @@ function stopSpeak() {
 // 页面加载完成后初始化
 document.addEventListener("DOMContentLoaded", init);
 
+// 益智游戏：配对记忆
+const gameIcons = ["🍎", "🍌", "🍇", "🍉", "🍋", "🍓"];
+let gameCards = [];
+let firstPick = null;
+let secondPick = null;
+let matchedCount = 0;
+let gameInitialized = false;
+let lockBoard = false;
+
+function initGame() {
+    const grid = document.getElementById("gameGrid");
+    if (!grid) return;
+    const icons = [...gameIcons, ...gameIcons];
+    gameCards = shuffleArray(icons).map((icon, index) => ({
+        id: index,
+        icon,
+        matched: false
+    }));
+    grid.innerHTML = "";
+    gameCards.forEach((card) => {
+        const div = document.createElement("div");
+        div.className = "card hidden-card";
+        div.dataset.id = card.id;
+        div.textContent = card.icon;
+        div.addEventListener("click", () => onCardClick(card.id));
+        grid.appendChild(div);
+    });
+    matchedCount = 0;
+    updateGameStatus();
+    gameInitialized = true;
+}
+
+function shuffleArray(arr) {
+    return arr
+        .map((item) => ({ item, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map((entry) => entry.item);
+}
+
+function onCardClick(id) {
+    if (lockBoard) return;
+    const card = gameCards.find((c) => c.id === id);
+    if (!card || card.matched) return;
+    const element = document.querySelector(`.card[data-id="${id}"]`);
+    if (!element || !element.classList.contains("hidden-card")) return;
+
+    element.classList.remove("hidden-card");
+
+    if (!firstPick) {
+        firstPick = card;
+        return;
+    }
+    secondPick = card;
+    checkMatch();
+}
+
+function checkMatch() {
+    if (!firstPick || !secondPick) return;
+    lockBoard = true;
+    if (firstPick.icon === secondPick.icon) {
+        markMatched(firstPick.id);
+        markMatched(secondPick.id);
+        matchedCount += 1;
+        resetPicks();
+        updateGameStatus();
+        lockBoard = false;
+    } else {
+        setTimeout(() => {
+            hideCard(firstPick.id);
+            hideCard(secondPick.id);
+            resetPicks();
+            lockBoard = false;
+        }, 800);
+    }
+}
+
+function markMatched(id) {
+    const card = gameCards.find((c) => c.id === id);
+    if (card) card.matched = true;
+    const element = document.querySelector(`.card[data-id="${id}"]`);
+    if (element) element.classList.add("matched");
+}
+
+function hideCard(id) {
+    const element = document.querySelector(`.card[data-id="${id}"]`);
+    if (element && !element.classList.contains("matched")) {
+        element.classList.add("hidden-card");
+    }
+}
+
+function resetPicks() {
+    firstPick = null;
+    secondPick = null;
+}
+
+function updateGameStatus() {
+    const status = document.getElementById("gameStatus");
+    if (status) status.innerText = `已配对：${matchedCount}/6`;
+}
+
+function resetGame() {
+    gameInitialized = false;
+    initGame();
+}

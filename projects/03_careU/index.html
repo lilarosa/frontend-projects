@@ -68,11 +68,23 @@
 
 </div>
 
+<!-- 益智游戏页面 -->
+        <div id="gamePage" class="page hidden">
+            <h2>益智游戏：配对记忆</h2>
+            <p class="hint">点击两张相同的图案完成配对。</p>
+            <div class="game-bar">
+                <button onclick="resetGame()">重新开始</button>
+                <span id="gameStatus">已配对：0/6</span>
+            </div>
+            <div id="gameGrid" class="game-grid"></div>
+        </div>
+
 <!-- 导航栏 -->
         <div class="navbar">
             <button onclick="showPage('homePage')">首页</button>
             <button onclick="showPage('taskPage')">任务</button>
             <button onclick="showPage('newsPage')">新闻</button>
+            <button onclick="showPage('gamePage')">游戏</button>
         </div>
         </div>
 
