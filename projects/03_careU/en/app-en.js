@@ -54,6 +54,11 @@ function showPage(pageId) {
         highlightCurrentTask();
         setTimeout(scrollToCurrentTask, 300);
     }
+    if (pageId === "gamePage") {
+        if (!gameInitialized) {
+            initGame();
+        }
+    }
 }
 
 function scrollToCurrentTask() {
@@ -244,3 +249,108 @@ if ("serviceWorker" in navigator) {
 }
 
 document.addEventListener("DOMContentLoaded", init);
+
+// Brain game: memory match
+const gameIcons = ["🍎", "🍌", "🍇", "🍉", "🍋", "🍓"];
+let gameCards = [];
+let firstPick = null;
+let secondPick = null;
+let matchedCount = 0;
+let gameInitialized = false;
+let lockBoard = false;
+
+function initGame() {
+    const grid = document.getElementById("gameGrid");
+    if (!grid) return;
+    const icons = [...gameIcons, ...gameIcons];
+    gameCards = shuffleArray(icons).map((icon, index) => ({
+        id: index,
+        icon,
+        matched: false
+    }));
+    grid.innerHTML = "";
+    gameCards.forEach((card) => {
+        const div = document.createElement("div");
+        div.className = "card hidden-card";
+        div.dataset.id = card.id;
+        div.textContent = card.icon;
+        div.addEventListener("click", () => onCardClick(card.id));
+        grid.appendChild(div);
+    });
+    matchedCount = 0;
+    updateGameStatus();
+    gameInitialized = true;
+}
+
+function shuffleArray(arr) {
+    return arr
+        .map((item) => ({ item, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map((entry) => entry.item);
+}
+
+function onCardClick(id) {
+    if (lockBoard) return;
+    const card = gameCards.find((c) => c.id === id);
+    if (!card || card.matched) return;
+    const element = document.querySelector(`.card[data-id="${id}"]`);
+    if (!element || !element.classList.contains("hidden-card")) return;
+
+    element.classList.remove("hidden-card");
+
+    if (!firstPick) {
+        firstPick = card;
+        return;
+    }
+    secondPick = card;
+    checkMatch();
+}
+
+function checkMatch() {
+    if (!firstPick || !secondPick) return;
+    lockBoard = true;
+    if (firstPick.icon === secondPick.icon) {
+        markMatched(firstPick.id);
+        markMatched(secondPick.id);
+        matchedCount += 1;
+        resetPicks();
+        updateGameStatus();
+        lockBoard = false;
+    } else {
+        setTimeout(() => {
+            hideCard(firstPick.id);
+            hideCard(secondPick.id);
+            resetPicks();
+            lockBoard = false;
+        }, 800);
+    }
+}
+
+function markMatched(id) {
+    const card = gameCards.find((c) => c.id === id);
+    if (card) card.matched = true;
+    const element = document.querySelector(`.card[data-id="${id}"]`);
+    if (element) element.classList.add("matched");
+}
+
+function hideCard(id) {
+    const element = document.querySelector(`.card[data-id="${id}"]`);
+    if (element && !element.classList.contains("matched")) {
+        element.classList.add("hidden-card");
+    }
+}
+
+function resetPicks() {
+    firstPick = null;
+    secondPick = null;
+}
+
+function updateGameStatus() {
+    const status = document.getElementById("gameStatus");
+    if (status) status.innerText = `Matched: ${matchedCount}/6`;
+}
+
+function resetGame() {
+    gameInitialized = false;
+    initGame();
+}

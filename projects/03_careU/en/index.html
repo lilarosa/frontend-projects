@@ -60,10 +60,21 @@
             </div>
         </div>
 
+        <div id="gamePage" class="page hidden">
+            <h2>Brain Game: Memory Match</h2>
+            <p class="hint">Tap two identical cards to make a pair.</p>
+            <div class="game-bar">
+                <button onclick="resetGame()">Restart</button>
+                <span id="gameStatus">Matched: 0/6</span>
+            </div>
+            <div id="gameGrid" class="game-grid"></div>
+        </div>
+
         <div class="navbar">
             <button onclick="showPage('homePage')">Home</button>
             <button onclick="showPage('taskPage')">Tasks</button>
             <button onclick="showPage('newsPage')">Daily</button>
+            <button onclick="showPage('gamePage')">Game</button>
         </div>
     </div>
 
