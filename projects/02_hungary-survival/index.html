@@ -122,10 +122,11 @@
             localStorage.setItem('last_rate', hufRate);
 
             // 获取天气 (wttr 极简接口)
-            const weatherRes = await fetch('https://wttr.in/Budapest?format=%t');
-            const weatherText = await weatherRes.text();
-            const temp = weatherText.replace('+', '');
-            document.getElementById('weatherTemp').innerText = temp;
+            //const weatherRes = await fetch('https://wttr.in/Budapest?format=%t');
+           // const weatherText = await weatherRes.text();
+           // const temp = weatherText.replace('+', '');
+            //document.getElementById('weatherTemp').innerText = temp;
+            document.getElementById('weatherTemp').innerText = 12°C;
             localStorage.setItem('last_temp', temp);
         } catch (e) {
             console.error("数据加载失败");
