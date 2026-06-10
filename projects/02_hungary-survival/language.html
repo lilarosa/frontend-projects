@@ -21,71 +21,72 @@
 
     <main class="scroll-area">
         <section class="section-block">
-    <h3 class="section-title">✨ Essential Tool Words (swipe horizontally)</h3>
-    <div class="vocab-grid">
-        <div class="vocab-item" onclick="openTreasure('Nincs', '<b>There is none / no / empty</b><br>Nincs penz (no money)<br>Nincs kaja (no food)')">
-            <div class="v-icon">🍾</div><div class="v-label">None</div>
-        </div>
-        <div class="vocab-item" onclick="openTreasure('Kérek', '<b>I would like / please give me</b><br>Kerek vizet (water, please)<br>Kerek szatyrot (a bag, please)')">
-            <div class="v-icon">🎁</div><div class="v-label">I Want</div>
-        </div>
-        <div class="vocab-item" onclick="openTreasure('Hol van?', '<b>Where is it?</b><br>Hol van a bolt? (Where is the shop?)')">
-            <div class="v-icon">🗝️</div><div class="v-label">Where</div>
-        </div>
-        <div class="vocab-item" onclick="openTreasure('Kész', '<b>Done / finished</b><br>Kesz! Use when something is completed.')">
-            <div class="v-icon">💰</div><div class="v-label">Done</div>
-        </div>
+    <h3 class="section-title">✨ Essential Tool Words</h3>
+    <p class="tool-word-hint">Hover to spin the tool icon. Click a card to reveal the Hungarian word.</p>
+    <div class="vocab-grid tool-word-strip" aria-label="Essential Hungarian tool words">
+        <button class="vocab-item tool-word-card" type="button" data-icons="🍾,🚫,⭕,🫙" data-word="Nincs" data-tip="There is none / no / empty. Example: Nincs pénz.">
+            <span class="v-icon">🍾</span><span class="v-label">None</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
+        <button class="vocab-item tool-word-card" type="button" data-icons="🎁,🛒,🥤,🛍️" data-word="Kérek" data-tip="I would like / please give me. Example: Kérek vizet.">
+            <span class="v-icon">🎁</span><span class="v-label">I Want</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
+        <button class="vocab-item tool-word-card" type="button" data-icons="🗝️,📍,🧭,🚪" data-word="Hol van?" data-tip="Where is it? Example: Hol van a bolt?">
+            <span class="v-icon">🗝️</span><span class="v-label">Where</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
+        <button class="vocab-item tool-word-card" type="button" data-icons="💰,✅,📦,🏁" data-word="Kész" data-tip="Done / finished. Use when something is completed.">
+            <span class="v-icon">💰</span><span class="v-label">Done</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
 
-        <div class="vocab-item" onclick="openTreasure('Szia', '<b>Hello / goodbye</b><br>A flexible greeting and farewell.')">
-            <div class="v-icon">👋</div><div class="v-label">Hello</div>
-        </div>
-        <div class="vocab-item" onclick="openTreasure('Köszönöm', '<b>Thank you</b><br>Informal: Koszi')">
-            <div class="v-icon">🙏</div><div class="v-label">Thanks</div>
-        </div>
-        <div class="vocab-item" onclick="openTreasure('Igen / Nem', '<b>Yes / no</b><br>Basic agreement and refusal.')">
-            <div class="v-icon">⚖️</div><div class="v-label">Yes / No</div>
-        </div>
-        <div class="vocab-item" onclick="openTreasure('Bocsánat', '<b>Sorry / excuse me</b><br>Use to pass by or get attention politely.')">
-            <div class="v-icon">🙇</div><div class="v-label">Sorry</div>
-        </div>
-        <div class="vocab-item" onclick="openTreasure('Tessék', '<b>Here you go / please / yes?</b><br>Useful when giving something or answering.')">
-            <div class="v-icon">🤲</div><div class="v-label">Please</div>
-        </div>
-        <div class="vocab-item" onclick="openTreasure('Értem', '<b>I understand</b><br>Use to show you understood.')">
-            <div class="v-icon">💡</div><div class="v-label">Understood</div>
-        </div>
+        <button class="vocab-item tool-word-card" type="button" data-icons="👋,🙂,🌞,🚪" data-word="Szia" data-tip="Hello / goodbye. A flexible greeting and farewell.">
+            <span class="v-icon">👋</span><span class="v-label">Hello</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
+        <button class="vocab-item tool-word-card" type="button" data-icons="🙏,💐,🤝,✨" data-word="Köszönöm" data-tip="Thank you. Informal: Köszi.">
+            <span class="v-icon">🙏</span><span class="v-label">Thanks</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
+        <button class="vocab-item tool-word-card" type="button" data-icons="⚖️,✅,❌,☑️" data-word="Igen / Nem" data-tip="Yes / no. Basic agreement and refusal.">
+            <span class="v-icon">⚖️</span><span class="v-label">Yes / No</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
+        <button class="vocab-item tool-word-card" type="button" data-icons="🙇,🚶,💬,🫱" data-word="Bocsánat" data-tip="Sorry / excuse me. Use to pass by or get attention politely.">
+            <span class="v-icon">🙇</span><span class="v-label">Sorry</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
+        <button class="vocab-item tool-word-card" type="button" data-icons="🤲,🎫,🍽️,📄" data-word="Tessék" data-tip="Here you go / please / yes? Useful when giving something or answering.">
+            <span class="v-icon">🤲</span><span class="v-label">Please</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
+        <button class="vocab-item tool-word-card" type="button" data-icons="💡,🧠,👌,📘" data-word="Értem" data-tip="I understand. Use to show you understood.">
+            <span class="v-icon">💡</span><span class="v-label">Understood</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
 
-        <div class="vocab-item" onclick="openTreasure('Mennyi?', '<b>How much?</b><br>Essential for shopping.')">
-            <div class="v-icon">🏷️</div><div class="v-label">How Much</div>
-        </div>
-        <div class="vocab-item" onclick="openTreasure('Segítség!', '<b>Help!</b><br>Use in emergencies.')">
-            <div class="v-icon">🆘</div><div class="v-label">Help</div>
-        </div>
-        <div class="vocab-item" onclick="openTreasure('Finom', '<b>Delicious</b><br>Useful for praising food.')">
-            <div class="v-icon">😋</div><div class="v-label">Tasty</div>
-        </div>
-        <div class="vocab-item" onclick="openTreasure('Most', '<b>Now</b><br>Use for urgency.')">
-            <div class="v-icon">⏰</div><div class="v-label">Now</div>
-        </div>
-        <div class="vocab-item" onclick="openTreasure('Itt / Ott', '<b>Here / there</b><br>Useful for directions.')">
-            <div class="v-icon">📍</div><div class="v-label">Location</div>
-        </div>
+        <button class="vocab-item tool-word-card" type="button" data-icons="🏷️,💳,🧾,💶" data-word="Mennyi?" data-tip="How much? Essential for shopping.">
+            <span class="v-icon">🏷️</span><span class="v-label">How Much</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
+        <button class="vocab-item tool-word-card" type="button" data-icons="🆘,🚨,📞,🛟" data-word="Segítség!" data-tip="Help! Use in emergencies.">
+            <span class="v-icon">🆘</span><span class="v-label">Help</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
+        <button class="vocab-item tool-word-card" type="button" data-icons="😋,🍲,⭐,🍰" data-word="Finom" data-tip="Delicious. Useful for praising food.">
+            <span class="v-icon">😋</span><span class="v-label">Tasty</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
+        <button class="vocab-item tool-word-card" type="button" data-icons="⏰,⚡,🏃,📍" data-word="Most" data-tip="Now. Use for urgency.">
+            <span class="v-icon">⏰</span><span class="v-label">Now</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
+        <button class="vocab-item tool-word-card" type="button" data-icons="📍,🧭,⬅️,➡️" data-word="Itt / Ott" data-tip="Here / there. Useful for directions.">
+            <span class="v-icon">📍</span><span class="v-label">Location</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
 
-        <div class="vocab-item" onclick="openTreasure('Éhes vagyok', '<b>I am hungry</b><br>Useful before ordering food.')">
-            <div class="v-icon">🍽️</div><div class="v-label">Hungry</div>
-        </div>
-        <div class="vocab-item" onclick="openTreasure('Számla', '<b>Bill</b><br>Say: Szamlat kerek.')">
-            <div class="v-icon">🧾</div><div class="v-label">Bill</div>
-        </div>
-        <div class="vocab-item" onclick="openTreasure('Nyitva / Zárva', '<b>Open / closed</b><br>Useful on shop signs.')">
-            <div class="v-icon">🚪</div><div class="v-label">Open</div>
-        </div>
-        <div class="vocab-item" onclick="openTreasure('Ingyen', '<b>Free</b><br>Always a useful word.')">
-            <div class="v-icon">🆓</div><div class="v-label">Free</div>
-        </div>
-        <div class="vocab-item" onclick="openTreasure('Várj', '<b>Please wait</b><br>Ask someone to wait briefly.')">
-            <div class="v-icon">⏳</div><div class="v-label">Wait</div>
-        </div>
+        <button class="vocab-item tool-word-card" type="button" data-icons="🍽️,🥪,🍜,😋" data-word="Éhes vagyok" data-tip="I am hungry. Useful before ordering food.">
+            <span class="v-icon">🍽️</span><span class="v-label">Hungry</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
+        <button class="vocab-item tool-word-card" type="button" data-icons="🧾,💳,💶,✍️" data-word="Számla" data-tip="Bill. Say: Számlát kérek.">
+            <span class="v-icon">🧾</span><span class="v-label">Bill</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
+        <button class="vocab-item tool-word-card" type="button" data-icons="🚪,🟢,🔴,🏪" data-word="Nyitva / Zárva" data-tip="Open / closed. Useful on shop signs.">
+            <span class="v-icon">🚪</span><span class="v-label">Open</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
+        <button class="vocab-item tool-word-card" type="button" data-icons="🆓,🎁,0️⃣,✨" data-word="Ingyen" data-tip="Free. Always a useful word.">
+            <span class="v-icon">🆓</span><span class="v-label">Free</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
+        <button class="vocab-item tool-word-card" type="button" data-icons="⏳,✋,⌛,🕰️" data-word="Várj" data-tip="Please wait. Ask someone to wait briefly.">
+            <span class="v-icon">⏳</span><span class="v-label">Wait</span><span class="v-hungarian" aria-hidden="true"></span>
+        </button>
     </div>
 </section>
 

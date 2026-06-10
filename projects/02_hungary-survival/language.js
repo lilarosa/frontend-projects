@@ -5,7 +5,84 @@ const categoryColors = {
 };
 document.addEventListener('DOMContentLoaded', () => {
     console.log("App Service Ready");
+    initEssentialToolWords();
 });
+
+function initEssentialToolWords() {
+    document.querySelectorAll('.tool-word-card').forEach(card => {
+        const icon = card.querySelector('.v-icon');
+        const originalIcon = icon ? icon.textContent : '';
+        const icons = (card.dataset.icons || originalIcon)
+            .split(',')
+            .map(item => item.trim())
+            .filter(Boolean);
+        let spinTimer = null;
+        let iconIndex = 0;
+
+        const startSpin = () => {
+            if (!icon || spinTimer || icons.length < 2) return;
+            card.classList.add('is-spinning');
+            spinTimer = window.setInterval(() => {
+                iconIndex = (iconIndex + 1) % icons.length;
+                icon.textContent = icons[iconIndex];
+            }, 240);
+        };
+
+        const stopSpin = () => {
+            if (spinTimer) {
+                window.clearInterval(spinTimer);
+                spinTimer = null;
+            }
+            card.classList.remove('is-spinning');
+            if (icon && !card.classList.contains('revealed')) {
+                icon.textContent = originalIcon;
+                iconIndex = 0;
+            }
+        };
+
+        card.addEventListener('mouseenter', startSpin);
+        card.addEventListener('mouseleave', stopSpin);
+        card.addEventListener('focus', startSpin);
+        card.addEventListener('blur', stopSpin);
+
+        card.addEventListener('click', () => {
+            const answer = card.querySelector('.v-hungarian');
+            const willReveal = !card.classList.contains('revealed');
+
+            document.querySelectorAll('.tool-word-card.revealed').forEach(openCard => {
+                if (openCard !== card) {
+                    openCard.classList.remove('revealed');
+                    const openAnswer = openCard.querySelector('.v-hungarian');
+                    if (openAnswer) {
+                        openAnswer.textContent = '';
+                        openAnswer.setAttribute('aria-hidden', 'true');
+                    }
+                }
+            });
+
+            card.classList.toggle('revealed', willReveal);
+
+            if (!answer) return;
+            if (willReveal) {
+                answer.innerHTML = `${escapeHTML(card.dataset.word || '')}<small>${escapeHTML(card.dataset.tip || '')}</small>`;
+                answer.setAttribute('aria-hidden', 'false');
+            } else {
+                answer.textContent = '';
+                answer.setAttribute('aria-hidden', 'true');
+            }
+        });
+    });
+}
+
+function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, char => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    })[char]);
+}
 
 function showScene(sceneKey) {
     const scene = sceneData[sceneKey];
