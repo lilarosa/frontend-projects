@@ -60,10 +60,12 @@ li {
     border-radius: 20px;
     color: white;
 }
-.daughter {
+.daughter,
+.friend {
     background-color: #43a047;
 }
-.son {
+.son,
+.family {
     background-color: #1e88e5;
 }
 .helper {

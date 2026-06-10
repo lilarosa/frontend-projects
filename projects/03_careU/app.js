@@ -26,13 +26,13 @@ function updateTime() {
     document.getElementById("greeting").innerText = greeting;
 }
 
-function callDaughter() {
-    document.getElementById("status").innerText = "Calling daughter...";
+function callFriend() {
+    document.getElementById("status").innerText = "Calling friend...";
     window.location.href = "tel:13641220025";
 }
 
-function callSon() {
-    document.getElementById("status").innerText = "Calling son...";
+function callFamily() {
+    document.getElementById("status").innerText = "Calling family...";
     window.location.href = "tel:13910013385";
 }
 
