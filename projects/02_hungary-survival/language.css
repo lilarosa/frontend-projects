@@ -39,11 +39,24 @@ body { font-family: sans-serif; background: var(--bg); margin: 0; padding-bottom
 
 .tool-word-strip {
     align-items: stretch;
-    padding-top: 12px;
+    padding: 12px 18px 22px 2px;
+    scroll-snap-type: x proximity;
+    scroll-padding-left: 2px;
+    overscroll-behavior-x: contain;
+    cursor: grab;
+}
+
+.tool-word-strip:active {
+    cursor: grabbing;
+}
+
+.tool-word-strip.is-dragging {
+    scroll-snap-type: none;
+    user-select: none;
 }
 
 .tool-word-card {
-    flex-basis: 112px;
+    flex: 0 0 112px;
     min-height: 128px;
     border: 1px solid #e2e8f0;
     cursor: pointer;
@@ -56,6 +69,7 @@ body { font-family: sans-serif; background: var(--bg); margin: 0; padding-bottom
     justify-content: center;
     align-items: center;
     gap: 8px;
+    scroll-snap-align: start;
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
@@ -98,10 +112,6 @@ body { font-family: sans-serif; background: var(--bg); margin: 0; padding-bottom
     box-shadow: inset 0 -2px 0 rgba(15, 23, 42, 0.04);
 }
 
-.tool-word-card.is-spinning .v-icon {
-    animation: toolIconPulse 0.42s ease-in-out infinite alternate;
-}
-
 .tool-word-card .v-label {
     font-size: 12px;
     line-height: 1.2;
@@ -138,11 +148,6 @@ body { font-family: sans-serif; background: var(--bg); margin: 0; padding-bottom
     max-height: 72px;
     opacity: 1;
     transform: translateY(0);
-}
-
-@keyframes toolIconPulse {
-    from { transform: rotate(-7deg) scale(1); }
-    to { transform: rotate(7deg) scale(1.08); }
 }
 
 .feature-card {

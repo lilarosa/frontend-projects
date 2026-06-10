@@ -6,45 +6,11 @@ const categoryColors = {
 document.addEventListener('DOMContentLoaded', () => {
     console.log("App Service Ready");
     initEssentialToolWords();
+    initToolWordCarousel();
 });
 
 function initEssentialToolWords() {
     document.querySelectorAll('.tool-word-card').forEach(card => {
-        const icon = card.querySelector('.v-icon');
-        const originalIcon = icon ? icon.textContent : '';
-        const icons = (card.dataset.icons || originalIcon)
-            .split(',')
-            .map(item => item.trim())
-            .filter(Boolean);
-        let spinTimer = null;
-        let iconIndex = 0;
-
-        const startSpin = () => {
-            if (!icon || spinTimer || icons.length < 2) return;
-            card.classList.add('is-spinning');
-            spinTimer = window.setInterval(() => {
-                iconIndex = (iconIndex + 1) % icons.length;
-                icon.textContent = icons[iconIndex];
-            }, 240);
-        };
-
-        const stopSpin = () => {
-            if (spinTimer) {
-                window.clearInterval(spinTimer);
-                spinTimer = null;
-            }
-            card.classList.remove('is-spinning');
-            if (icon && !card.classList.contains('revealed')) {
-                icon.textContent = originalIcon;
-                iconIndex = 0;
-            }
-        };
-
-        card.addEventListener('mouseenter', startSpin);
-        card.addEventListener('mouseleave', stopSpin);
-        card.addEventListener('focus', startSpin);
-        card.addEventListener('blur', stopSpin);
-
         card.addEventListener('click', () => {
             const answer = card.querySelector('.v-hungarian');
             const willReveal = !card.classList.contains('revealed');
@@ -72,6 +38,47 @@ function initEssentialToolWords() {
             }
         });
     });
+}
+
+function initToolWordCarousel() {
+    const strip = document.querySelector('.tool-word-strip');
+    if (!strip) return;
+
+    let isDragging = false;
+    let dragMoved = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+
+    strip.addEventListener('pointerdown', event => {
+        isDragging = true;
+        dragMoved = false;
+        startX = event.clientX;
+        startScrollLeft = strip.scrollLeft;
+        strip.classList.add('is-dragging');
+    });
+
+    strip.addEventListener('pointermove', event => {
+        if (!isDragging) return;
+        const distance = event.clientX - startX;
+        if (Math.abs(distance) > 6) dragMoved = true;
+        strip.scrollLeft = startScrollLeft - distance;
+    });
+
+    const stopDrag = () => {
+        isDragging = false;
+        strip.classList.remove('is-dragging');
+    };
+
+    strip.addEventListener('pointerup', stopDrag);
+    strip.addEventListener('pointerleave', stopDrag);
+    strip.addEventListener('pointercancel', stopDrag);
+
+    strip.addEventListener('click', event => {
+        if (!dragMoved) return;
+        event.preventDefault();
+        event.stopPropagation();
+        dragMoved = false;
+    }, true);
 }
 
 function escapeHTML(value) {
