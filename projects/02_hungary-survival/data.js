@@ -1,70 +1,64 @@
 const cultureData = {
-    // 1. 新手入门
     guide: {
-        title: "生存第一课",
+        title: "Survival Essentials",
         sections: [
             {
-                subtitle: "移动支付与现金",
+                subtitle: "Money, cards, and daily payments",
                 items: [
-                    "市区换钱：认准 Correct Change (橙色招牌)，汇率全城最稳。",
-                    "银行卡：Revolut 在匈牙利极其普及，汇率优于本地银行卡。",
-                    "小费习惯：餐厅通常含10-12.5%服务费，若不含，建议给10%现金。"
+                    "Currency exchange: use reputable exchange offices such as Correct Change and always check the final rate before signing.",
+                    "Banking: Revolut is widely used in Hungary and is useful for exchange rates and everyday card payments.",
+                    "Tipping: restaurants often include a 10-12.5% service fee. If not included, 10% is a common tip."
                 ]
             },
             {
-                subtitle: "必备APP清单",
+                subtitle: "Useful apps",
                 items: [
-                    "BudapestGO：买所有种类的公交票、查实时时刻表。",
-                    "Wolt/Foodora：当地主流的外卖配送平台。",
-                    "MÁV：跨城市火车票提前在App买有折扣。"
+                    "BudapestGO: tickets, passes, route planning, and live public transport information.",
+                    "Wolt / Foodora: mainstream food delivery platforms in Budapest.",
+                    "MAV: train tickets for trips outside Budapest, often cheaper when booked in advance."
                 ]
             }
         ]
     },
-
-    // 2. 7天安顿计划 (完整版)
     onboarding: [
-        { day: "D1", title: "通讯与票务", tasks: ["办理手机号 (Telekom/Yettel)", "BudapestGO 购买月票", "下载 Wolt 解决首餐"], tip: "机场办卡比市区贵不少，急用可先买 eSim。" },
-        { day: "D2", title: "确认合同", tasks: ["与房东签署正规租赁合同", "核对家具清单与水电底数", "索取地址报备表"], tip: "拍照保存所有墙角和家电原始状态。" },
-        { day: "D3", title: "居留申报", tasks: ["Enter Hungary 官网注册", "上传合同与护照扫描件", "完成首次入境申报"], tip: "官网有时需要翻墙或使用本地网络才顺畅。" },
-        { day: "D4", title: "政务注册", tasks: ["去 Kormányablak 办 Ügyfélkapu", "领取基础法律手册", "咨询医生划分"], tip: "Ügyfélkapu 账号是你在匈牙利的电子身份证。" },
-        { day: "D5", title: "金融服务", tasks: ["银行开户 (OTP/Erste)", "申请 HUF 福林账户", "激活手机银行"], tip: "学生办卡通常免年费，记得带学生证或在读证明。" },
-        { day: "D6", title: "税务社保", tasks: ["NAV 申领个人税号卡", "确认 TAJ 医保申请状态", "登记个人联系信息"], tip: "税号卡 (Adókártya) 是打工和退税的必备。" },
-        { day: "D7", title: "生活整备", tasks: ["熟悉社区垃圾分类点", "寻找最近的 ALDI/LIDL", "办理健身房/借书证"], tip: "周日大部分商铺关门早，下午4点前完成采购。" }
+        { day: "D1", title: "Phone and transport", tasks: ["Set up a SIM or eSIM", "Buy a BudapestGO pass", "Save emergency contacts"], tip: "Airport SIM cards can be expensive. Use an eSIM first if you only need temporary data." },
+        { day: "D2", title: "Housing contract", tasks: ["Sign a written rental contract", "Photograph furniture and meters", "Ask for the address registration form"], tip: "Keep photos of the apartment condition before moving in." },
+        { day: "D3", title: "Residence paperwork", tasks: ["Create an Enter Hungary account", "Upload contract and passport scans", "Track the case status online"], tip: "Some government sites work better from a local network." },
+        { day: "D4", title: "Government account", tasks: ["Visit Kormanyablak", "Create Ugyfelkapu access", "Ask which GP area applies to your address"], tip: "Ugyfelkapu is the gateway for many official online services." },
+        { day: "D5", title: "Banking", tasks: ["Open a local bank account if needed", "Request a HUF account", "Activate mobile banking"], tip: "Students may qualify for reduced account fees." },
+        { day: "D6", title: "Tax and health", tasks: ["Apply for a tax card if needed", "Check TAJ or insurance status", "Store official IDs safely"], tip: "The tax card is important for work and tax administration." },
+        { day: "D7", title: "Local life setup", tasks: ["Find nearby ALDI/LIDL/SPAR", "Learn waste sorting rules", "Register for gym/library if useful"], tip: "Many shops close earlier on Sundays, so plan grocery shopping ahead." }
     ],
-
-    // 3. 住房攻略
     housing: {
-        title: "住房避坑指南",
+        title: "Housing Checklist",
         sections: [
             {
-                subtitle: "成本核算",
+                subtitle: "Cost review",
                 items: [
-                    "公共费 (Common Cost)：包含楼梯清扫、垃圾费，问清是否含水费。",
-                    "取暖类型：Cirkó (燃气) > Távfűtés (集中供暖) > Elektromos (电暖)。",
-                    "水电费：匈牙利实行预估制或读表制，建议每月按实际读数缴费。"
+                    "Common cost: ask what is included, especially water, cleaning, lift, and waste fees.",
+                    "Heating type matters: gas, district heating, and electric heating can lead to very different bills.",
+                    "Utilities: record meter readings monthly and keep payment receipts."
                 ]
             },
             {
-                subtitle: "合同风险",
+                subtitle: "Contract risks",
                 items: [
-                    "违约金：通常中途退租押金不退，需确认合同是否有转租条款。",
-                    "外交官条款：由于签证被拒导致的退租，可尝试协商退还押金。"
+                    "Deposit: clarify when it can be withheld and how the handover will be documented.",
+                    "Early termination: check notice periods and whether subletting is allowed.",
+                    "Owners: confirm the person signing has authority to rent the apartment."
                 ]
             }
         ]
     },
-
-    // 4. 地址卡专题
     address: {
-        title: "地址卡办理细节",
+        title: "Address Card Details",
         sections: [
             {
-                subtitle: "申请核心",
+                subtitle: "Core requirements",
                 items: [
-                    "表格：Lakcímbejelentő lap，必须用蓝笔填写，不能涂改。",
-                    "签字：所有房东必须在‘所有者’栏签字，缺一不可。",
-                    "期限：搬家后 3 天内应去政务中心更新地址。"
+                    "Form: Lakcimbejelento lap, usually filled in with a blue pen.",
+                    "Signatures: all relevant owners must sign where required.",
+                    "Timing: update your address soon after moving to avoid paperwork issues."
                 ]
             }
         ]

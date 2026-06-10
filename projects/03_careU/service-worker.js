@@ -1,34 +1,28 @@
-const CACHE_NAME = 'careu-cache-v1';
+const CACHE_NAME = 'careu-en-v2';
 const urlsToCache = [
     './',
     './index.html',
+    './app.js',
     './page.css',
     './manifest.json',
-    './app.js',
     './assets/daughter.svg',
     './assets/son.svg'
 ];
 
 self.addEventListener('install', function(event) {
-    // Perform install steps
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(function(cache) {
-                console.log('Opened cache');
                 return cache.addAll(urlsToCache);
             })
     );
-}); 
-self.addEventListener('fetch', function(event) { 
+});
+
+self.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request)
             .then(function(response) {
-                // Cache hit - return response
-                if (response) {
-                    return response;
-                }
-                return fetch(event.request);
-            }
-        )
+                return response || fetch(event.request);
+            })
     );
 });

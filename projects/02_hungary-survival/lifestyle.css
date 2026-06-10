@@ -4,8 +4,8 @@ body { background: #fdfdfd; font-family: sans-serif; margin: 0; }
 .page-header h1 { color: #2c3e50; font-size: 24px; }
 
 .category-tabs { display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 10px; }
-.tab-btn { 
-    border: none; background: #eee; padding: 8px 18px; 
+.tab-btn {
+    border: none; background: #eee; padding: 8px 18px;
     border-radius: 20px; white-space: nowrap; cursor: pointer;
 }
 .tab-btn.active { background: #3498db; color: white; }
@@ -14,7 +14,7 @@ body { background: #fdfdfd; font-family: sans-serif; margin: 0; }
     background: white; border-radius: 15px; padding: 18px;
     margin-bottom: 20px; border: 1px solid #f0f0f0;
     box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-    /* 计算器卡片特有样式 */
+
 .tax-calc-card {
     background: linear-gradient(135deg, #6c5ce7, #a29bfe);
     color: white;
@@ -77,7 +77,7 @@ body { background: #fdfdfd; font-family: sans-serif; margin: 0; }
 .result-area strong { font-size: 20px; color: #ffeaa7; }
 .result-area small { font-size: 11px; opacity: 0.8; }
 
-/* 动画效果 */
+
 .fade-in {
     animation: fadeIn 0.5s ease;
 }
@@ -92,19 +92,19 @@ body { background: #fdfdfd; font-family: sans-serif; margin: 0; }
 .difficulty { color: #f1c40f; font-size: 12px; }
 
 .step { font-size: 14px; margin-bottom: 10px; color: #555; display: flex; align-items: flex-start; }
-.step span { 
-    background: #3498db; color: white; width: 18px; height: 18px; 
+.step span {
+    background: #3498db; color: white; width: 18px; height: 18px;
     border-radius: 50%; display: flex; justify-content: center; align-items: center;
     font-size: 10px; margin-right: 10px; flex-shrink: 0; margin-top: 2px;
 }
 
 .task-footer { background: #f9f9f9; padding: 10px; border-radius: 8px; font-size: 12px; color: #7f8c8d; border-top: 1px dashed #ddd; }
 .back-home-btn {
-    position: fixed;    /* 关键：固定定位，不随页面滑动 */
-    top: 15px;         /* 距离顶部距离 */
-    right: 15px;       /* 移到右侧 */
-    z-index: 2001;     /* 确保层级高于弹窗(2000)和内容 */
-    
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 2001;
+
     display: flex;
     align-items: center;
     background: white;
@@ -114,15 +114,15 @@ body { background: #fdfdfd; font-family: sans-serif; margin: 0; }
     color: #2c3e50;
     font-weight: bold;
     font-size: 13px;
-    
-    /* 边框和阴影增加质感 */
-    border: 2px solid #2c3e50; 
+
+
+    border: 2px solid #2c3e50;
     box-shadow: 4px 4px 0px rgba(44, 62, 80, 0.2);
     transition: all 0.2s ease;
 }
 
 .back-home-btn:active {
-    transform: translate(2px, 2px); /* 点击时的下沉感 */
+    transform: translate(2px, 2px);
     box-shadow: 0px 0px 0px rgba(44, 62, 80, 0.2);
 }
 

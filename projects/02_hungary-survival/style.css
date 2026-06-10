@@ -15,18 +15,18 @@ body {
 
 .dashboard-page {
     padding: 20px;
-    max-width: 500px; /* 适配移动端 */
+    max-width: 500px;
     margin: 0 auto;
 }
 
-/* 头部样式 */
+
 .hero-section {
     padding: 20px 0;
 }
 .brand h1 { font-size: 24px; margin: 0; font-weight: 800; letter-spacing: -1px; }
 .brand p { font-size: 14px; opacity: 0.6; margin: 5px 0 20px; }
 
-/* 进度条样式 */
+
 .survival-status-card {
     background: var(--card-bg);
     padding: 15px;
@@ -39,13 +39,13 @@ body {
 }
 .level-tag { color: var(--accent-blue); font-weight: bold; }
 .progress-track { height: 6px; background: #000; border-radius: 10px; overflow: hidden; }
-.progress-fill { 
-    height: 100%; width: 0; 
+.progress-fill {
+    height: 100%; width: 0;
     background: linear-gradient(90deg, var(--accent-blue), #818cf8);
     transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 挂件布局 */
+
 .widget-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -64,7 +64,7 @@ body {
 .w-val { font-size: 11px; font-weight: bold; white-space: nowrap; }
 .widget.urgent { background: rgba(255, 71, 87, 0.1); border-color: rgba(255, 71, 87, 0.3); }
 
-/* 功能网格 - 这是解决对齐的关键 */
+
 .module-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -85,10 +85,10 @@ body {
 .node-card h3 { font-size: 15px; margin: 0; color: #fff; }
 .node-card p { font-size: 11px; margin: 5px 0 0; opacity: 0.5; line-height: 1.4; }
 
-/* 警示样式 */
+
 .node-card.danger { border-color: rgba(255, 71, 87, 0.3); }
 
-/* 底部拨号区 */
+
 .dial-section h3 { font-size: 14px; opacity: 0.5; margin-bottom: 12px; text-align: center; }
 .dial-group { display: flex; gap: 10px; }
 .dial-btn {

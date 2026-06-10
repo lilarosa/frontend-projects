@@ -5,22 +5,22 @@ body { font-family: sans-serif; background: var(--bg); margin: 0; padding-bottom
 .section-block { margin: 25px 15px; }
 .section-title { font-size: 18px; margin-bottom: 15px; }
 
-/* 磁贴与卡片 */
+
 .vocab-grid {
-    display: flex; /* 改为弹性布局 */
-    overflow-x: auto; /* 开启横向滚动 */
+    display: flex;
+    overflow-x: auto;
     overflow-y: hidden;
-    gap: 12px; /* 每个项之间的间距 */
-    padding: 10px 5px 20px 5px; /* 增加底部 padding 防止滚动条遮挡阴影 */
-    -webkit-overflow-scrolling: touch; /* 优化 iOS 滚动手感 */
-    scrollbar-width: none; /* 隐藏火狐滚动条 */
+    gap: 12px;
+    padding: 10px 5px 20px 5px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
 }
 
 .vocab-grid::-webkit-scrollbar {
-    display: none; /* 隐藏 Chrome/Safari 滚动条，让界面更干净 */
+    display: none;
 }
 .vocab-item {
-    flex: 0 0 85px; /* 不放大、不缩小、固定宽度 85px */
+    flex: 0 0 85px;
     background: white;
     padding: 15px 5px;
     border-radius: 15px;
@@ -30,15 +30,15 @@ body { font-family: sans-serif; background: var(--bg); margin: 0; padding-bottom
 }
 .v-icon { font-size: 22px; } .v-label { font-size: 11px; font-weight: bold; }
 
-.feature-card { 
-    background: white; 
-    padding: 18px; 
-    border-radius: 20px; 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    margin-bottom: 12px; 
-    border: 1px solid #e2e8f0; 
+.feature-card {
+    background: white;
+    padding: 18px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    border: 1px solid #e2e8f0;
     transition: transform 0.2s;
 }
 .feature-card:active { transform: scale(0.98); }
@@ -47,7 +47,7 @@ body { font-family: sans-serif; background: var(--bg); margin: 0; padding-bottom
 .scene-card { background: white; display: flex; align-items: center; padding: 15px; border-radius: 20px; margin-bottom: 10px; }
 .scene-visual { font-size: 24px; margin-right: 15px; width: 50px; height: 50px; background: #eff6ff; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
 
-/* 弹窗与积木 */
+
 .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 1000; }
 .modal-content { background: white; width: 90%; max-height: 80vh; border-radius: 25px; padding: 25px; overflow-y: auto; }
 
@@ -89,10 +89,10 @@ body { font-family: sans-serif; background: var(--bg); margin: 0; padding-bottom
 .emo-row:last-child { border-bottom: none; }
 .emo-h { font-weight: bold; color: #1e293b; font-size: 16px; }
 .emo-c { color: #64748b; font-size: 13px; text-align: right; }
-.office .scene-visual { background: #fef3c7; } /* 暖咖啡色 */
-.sightseeing .scene-visual { background: #dcfce7; } /* 景点绿 */
-.restaurant .scene-visual { background: #fee2e2; } /* 食欲红 */
-/* 积木卡片布局 */
+.office .scene-visual { background: #fef3c7; }
+.sightseeing .scene-visual { background: #dcfce7; }
+.restaurant .scene-visual { background: #fee2e2; }
+
 .formula-scroll-container {
     display: flex;
     flex-direction: column;
@@ -165,11 +165,11 @@ body { font-family: sans-serif; background: var(--bg); margin: 0; padding-bottom
     font-weight: bold;
 }
 .back-home-btn {
-    position: fixed;    /* 关键：固定定位，不随页面滑动 */
-    top: 15px;         /* 距离顶部距离 */
-    right: 15px;       /* 移到右侧 */
-    z-index: 2001;     /* 确保层级高于弹窗(2000)和内容 */
-    
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 2001;
+
     display: flex;
     align-items: center;
     background: white;
@@ -179,15 +179,15 @@ body { font-family: sans-serif; background: var(--bg); margin: 0; padding-bottom
     color: #2c3e50;
     font-weight: bold;
     font-size: 13px;
-    
-    /* 边框和阴影增加质感 */
-    border: 2px solid #2c3e50; 
+
+
+    border: 2px solid #2c3e50;
     box-shadow: 4px 4px 0px rgba(44, 62, 80, 0.2);
     transition: all 0.2s ease;
 }
 
 .back-home-btn:active {
-    transform: translate(2px, 2px); /* 点击时的下沉感 */
+    transform: translate(2px, 2px);
     box-shadow: 0px 0px 0px rgba(44, 62, 80, 0.2);
 }
 
@@ -195,7 +195,7 @@ body { font-family: sans-serif; background: var(--bg); margin: 0; padding-bottom
     margin-right: 4px;
     font-size: 16px;
 }
-/* 词条展示动画 */
+
 .vocab-card.revealed {
     background: white !important;
     border-color: #10b981 !important;
@@ -211,16 +211,16 @@ body { font-family: sans-serif; background: var(--bg); margin: 0; padding-bottom
     display: none;
 }
 .vocab-card {
-    /* ...原有样式... */
-    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 增加回弹感 */
+
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .vocab-card:active {
-    transform: scale(0.95); /* 点击时的按压缩放效果 */
+    transform: scale(0.95);
 }
 
 .vocab-card.revealed {
     transform: scale(1.02);
     background: #ffffff;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* 翻开后阴影加深，更有“浮起”感 */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }

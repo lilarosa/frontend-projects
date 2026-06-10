@@ -1,28 +1,25 @@
-// --- 1. 初始化 ---
 const categoryColors = {
-    "超市": "#3b82f6", "交通": "#f59e0b", "餐厅": "#ef4444",
-    "医疗健康": "#10b981", "居家租房": "#8b5cf6", "情绪反馈": "#ec4899",
-    "社交": "#6366f1", "全部": "#64748b"
+    "Supermarket": "#3b82f6", "Transport": "#f59e0b", "Restaurant": "#ef4444",
+    "Healthcare": "#10b981", "Housing": "#8b5cf6", "Emotion": "#ec4899",
+    "Social": "#6366f1", "All": "#64748b"
 };
 document.addEventListener('DOMContentLoaded', () => {
     console.log("App Service Ready");
-    // 移除了所有 updateVipUI 等带有 Vip 词汇的调用
 });
 
-// --- 2. 核心功能：显示场景内容 ---
 function showScene(sceneKey) {
     const scene = sceneData[sceneKey];
     if (!scene) return;
 
     const container = document.getElementById('modalContent');
-    
+
     let html = `
         <div class="scene-header" style="position:sticky; top:0; background:white; z-index:10; padding-bottom:10px; border-bottom:2px solid #f0f2f5;">
             <h2 style="margin:0;">${scene.title}</h2>
         </div>
         <div class="scene-scroll-body" style="overflow-y:auto; max-height:65vh; padding-top:15px;">
     `;
-    
+
     scene.categories.forEach(cat => {
         html += `<h3 class="cat-title" style="color:#4a90e2; margin-top:15px;">📌 ${cat.name}</h3>`;
         cat.list.forEach(item => {
@@ -33,37 +30,34 @@ function showScene(sceneKey) {
                 </div>`;
         });
     });
-    
-    html += `</div>`; 
+
+    html += `</div>`;
     container.innerHTML = html;
     document.getElementById('studyModal').style.display = 'flex';
 }
 
-// --- 3. 核心分发：处理功能点击 (去 Pro 化) ---
 function handleDetailOpen(type) {
-    // 彻底删除了 isProUnlocked 判断和 showPayWall 调用
-    if (type === '300词') {
+    if (type === 'Vocabulary' ) {
         renderVocabList();
-    } else if (type === '语序公式') {
+    } else if (type === 'Formula' ) {
         renderFormulas();
-    } else if (type === '情绪表达') {
+    } else if (type === 'Emotion' ) {
         renderEmotions();
     }
 }
 
-// --- 4. 子模块渲染函数 ---
 
 function renderFormulas() {
     const container = document.getElementById('modalContent');
     let html = `
         <div class="feature-header" style="text-align:center; margin-bottom:20px;">
-            <span class="badge-tag">🧱 积木逻辑</span>
-            <h3>万能积木公式</h3>
-            <p>记住拼装逻辑，沟通更简单</p>
+            <span class="badge-tag">🧱 Building Blocks</span>
+            <h3>Sentence Building Blocks</h3>
+            <p>Use reliable patterns for everyday communication</p>
         </div>
         <div class="formula-scroll-container">
     `;
-    
+
     proFormulas.forEach((f, i) => {
         html += `
             <div class="formula-card">
@@ -75,11 +69,11 @@ function renderFormulas() {
                 </div>
                 <div class="formula-info">
                     <strong>${f.desc}</strong>
-                    <p>💡 例子：${f.note}</p>
+                    <p>💡 Example: ${f.note}</p>
                 </div>
             </div>`;
     });
-    
+
     html += `</div>`;
     container.innerHTML = html;
     document.getElementById('studyModal').style.display = 'flex';
@@ -87,48 +81,43 @@ function renderFormulas() {
 
 function renderVocabList() {
     const container = document.getElementById('modalContent');
-    const categories = ["全部", "超市", "餐厅","生活办事", "交通", "社交常用", "医疗健康", "居家租房", "方位寻找","情绪反馈"];
-    
+    const categories = ["All", "Supermarket", "Restaurant", "Life Admin", "Transport", "Social", "Healthcare", "Housing", "Directions", "Emotion"];
+
     container.innerHTML = `
         <div class="vocab-header" style="text-align:center; padding: 10px 0;">
-            <h3 style="margin:0;">📖 核心生存词库</h3>
+            <h3 style="margin:0;">📖 Core Survival Vocabulary</h3>
         </div>
         <div class="search-box" style="padding:10px;">
-            <input type="text" id="vocabSearch" oninput="searchVocab()" placeholder="🔍 搜索中文或匈语..." 
+            <input type="text" id="vocabSearch" oninput="searchVocab()" placeholder="🔍 Search English or Hungarian..."
                    style="width:100%; padding:12px; border-radius:12px; border:1px solid #e2e8f0; outline:none;">
         </div>
         <div class="category-tabs" style="display:flex; overflow-x:auto; gap:8px; padding:10px; white-space:nowrap;">
             ${categories.map(cat => `<button onclick="filterVocab('${cat}')" class="tab-btn">${cat}</button>`).join('')}
         </div>
         <div id="vocabListContainer" class="vocab-scroll-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:10px; max-height:55vh; overflow-y:auto;">
-            ${generateVocabHTML('全部')}
+            ${generateVocabHTML('All')}
         </div>
     `;
     document.getElementById('studyModal').style.display = 'flex';
 }
 
-// 3. 生成带颜色的卡片 HTML
 function generateVocabHTML(filter) {
     let items = [];
-    
-    // 1. 收集匹配的数据
+
     vocab500Data.forEach(section => {
-        // 使用 includes 增加兼容性，防止因为多一个空格导致匹配失败
-        if (filter === '全部' || section.cat.includes(filter) || filter.includes(section.cat)) {
+        if (filter === 'All' || section.cat.includes(filter) || filter.includes(section.cat)) {
             const sectionItems = section.list.map(i => ({...i, category: section.cat}));
             items = items.concat(sectionItems);
         }
     });
 
-    // 2. 检查是否有结果 (必须放在 map 之前)
     if (items.length === 0) {
         return `<div style="grid-column: 1/-1; text-align:center; padding:50px; color:#94a3b8;">
-                    该分类 [${filter}] 下暂无词汇
+                    No vocabulary under [${filter}] yet
                 </div>`;
     }
 
-    // 3. 统一返回生成的 HTML
-   
+
 
 
     return items.map(item => {
@@ -142,11 +131,9 @@ function generateVocabHTML(filter) {
     }).join('');
 }
 
-// 翻牌逻辑 (确保这个函数在 generateVocabHTML 外面)
 function toggleCard(el) {
     el.classList.toggle('revealed');
 }
-// --- 5. 弹窗控制 ---
 function showDetailView(title, content) {
     const container = document.getElementById('modalContent');
     if (container) {
@@ -154,7 +141,7 @@ function showDetailView(title, content) {
             <div style="padding:10px;">
                 <h3 style="color:#1e293b; border-bottom:2px solid #10b981; padding-bottom:10px;">${title}</h3>
                 <p style="font-size:16px; line-height:1.6; color:#475569; background:#f8fafc; padding:15px; border-radius:12px;">${content}</p>
-                <button onclick="closeModal()" style="width:100%; padding:12px; background:#10b981; color:white; border:none; border-radius:10px; margin-top:15px;">确定</button>
+                <button onclick="closeModal()" style="width:100%; padding:12px; background:#10b981; color:white; border:none; border-radius:10px; margin-top:15px;">Close</button>
             </div>
         `;
         document.getElementById('studyModal').style.display = 'flex';
@@ -163,7 +150,6 @@ function showDetailView(title, content) {
 
 function closeModal() { document.getElementById('studyModal').style.display = 'none'; }
 
-// 点击背景关闭
 window.onclick = function(event) {
     const modal = document.getElementById('studyModal');
     if (event.target == modal) closeModal();
@@ -174,14 +160,13 @@ function renderEmotions() {
 
     let html = `
         <div class="feature-header" style="text-align:center; margin-bottom:20px;">
-            <span class="badge-tag">🎭 表达艺术</span>
-            <h3>情绪/同意的5种等级</h3>
-            <p>从礼貌拒绝到极度赞成</p>
+            <span class="badge-tag">🎭 Tone and Expression</span>
+            <h3>Five Levels of Agreement</h3>
+            <p>From polite refusal to strong agreement</p>
         </div>
         <div class="emotion-scroll-body" style="overflow-y:auto; max-height:65vh;">
     `;
 
-    // 遍历 5 个等级的数据
     emotionData.forEach(item => {
         html += `
             <div class="emotion-group" style="margin-bottom:25px;">
@@ -204,14 +189,14 @@ function renderEmotions() {
     });
 
     html += `</div>`;
-    
+
     container.innerHTML = html;
     document.getElementById('studyModal').style.display = 'flex';
 }
 function filterVocab(cat) {
     const listContainer = document.getElementById('vocabListContainer');
-    listContainer.style.opacity = '0'; // 做个简单的淡出效果
-    
+    listContainer.style.opacity = '0';
+
     setTimeout(() => {
         listContainer.innerHTML = generateVocabHTML(cat);
         listContainer.style.opacity = '1';
