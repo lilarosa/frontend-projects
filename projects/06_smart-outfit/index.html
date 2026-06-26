@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Outfit Wardrobe</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="app-header">
+    <nav>
+      <a href="../../index.html">Frontend Projects</a>
+      <span>Smart Outfit</span>
+    </nav>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Flutter prototype · wardrobe planner</p>
+        <h1>Smart Outfit Wardrobe</h1>
+        <p class="lead">
+          A personal wardrobe assistant concept for cataloging clothes, planning outfits,
+          and matching recommendations to season, occasion, temperature, and color.
+        </p>
+        <div class="actions">
+          <a href="#features">View features</a>
+          <a href="../05_chinese-poetry-de/index.html">Next project</a>
+        </div>
+      </div>
+      <div class="phone-preview" aria-label="Smart outfit interface preview">
+        <div class="screen">
+          <div class="screen-top">
+            <span>Wardrobe</span>
+            <strong>24 items</strong>
+          </div>
+          <div class="outfit-card coat">
+            <span>Outerwear</span>
+            <strong>Cream trench</strong>
+          </div>
+          <div class="outfit-card top">
+            <span>Top</span>
+            <strong>Silk blouse</strong>
+          </div>
+          <div class="outfit-card bottom">
+            <span>Bottom</span>
+            <strong>Wide trousers</strong>
+          </div>
+          <div class="recommendation">
+            <span>Recommended for</span>
+            <strong>Work · Spring · 18°C</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="feature-grid" id="features">
+      <article>
+        <span>01</span>
+        <h2>Clothing Catalog</h2>
+        <p>Add clothing items with category, color, season, occasion, and an image URL or uploaded photo.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h2>Outfit Recommendations</h2>
+        <p>Combine wardrobe items into outfit suggestions based on context and preference.</p>
+      </article>
+      <article>
+        <span>03</span>
+        <h2>Planning Utilities</h2>
+        <p>The backend model includes favorite outfits, calendar entries, packing lists, and wellness notes.</p>
+      </article>
+    </section>
+
+    <section class="stack-section">
+      <div>
+        <p class="eyebrow">Project notes</p>
+        <h2>Built as a Flutter + backend learning project</h2>
+      </div>
+      <p>
+        The original app lives locally as a Flutter project named <code>smart_outfit_flutter</code>.
+        This GitHub Pages version is a static showcase, because the full app expects local API
+        services for clothes, image upload, and recommendations.
+      </p>
+      <ul>
+        <li>Flutter UI for clothes and recommendations</li>
+        <li>Spring-style backend model for wardrobe data</li>
+        <li>Image upload workflow and outfit matching logic</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

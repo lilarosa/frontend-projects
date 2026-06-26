@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinesische Poesie auf Deutsch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="topbar" aria-label="Hauptnavigation">
+            <a class="brand" href="#lernen">詩 Deutsch</a>
+            <div class="nav-links">
+                <a href="#lernen">Lernen</a>
+                <a href="#wortschatz">Wortschatz</a>
+                <a href="#notizen">Notizen</a>
+            </div>
+        </nav>
+
+        <section class="hero" id="lernen">
+            <div class="hero-copy">
+                <p class="eyebrow">中国古诗 · Deutsche Übersetzung · Grammatik</p>
+                <h1>Chinesische Poesie auf Deutsch</h1>
+                <p>
+                    Lies klassische Verse Satz für Satz, vergleiche die deutsche
+                    Übersetzung und sammle Grammatik sowie Wortschatz für dein
+                    Deutschlernen.
+                </p>
+            </div>
+            <div class="ink-panel" aria-hidden="true">
+                <span>山</span>
+                <span>月</span>
+                <span>风</span>
+                <span>诗</span>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <section class="workspace" aria-label="Gedicht lernen">
+            <aside class="library-panel">
+                <div class="panel-heading">
+                    <p class="label">Bibliothek</p>
+                    <h2>Gedicht auswählen</h2>
+                </div>
+
+                <label class="select-label" for="poemSelect">Klassiker</label>
+                <select id="poemSelect"></select>
+
+                <div class="meta-grid">
+                    <div>
+                        <span>Autor</span>
+                        <strong id="poemAuthor"></strong>
+                    </div>
+                    <div>
+                        <span>Epoche</span>
+                        <strong id="poemDynasty"></strong>
+                    </div>
+                    <div>
+                        <span>Thema</span>
+                        <strong id="poemTheme"></strong>
+                    </div>
+                </div>
+
+                <button class="primary-button" id="randomBtn" type="button">Zufälliges Gedicht</button>
+            </aside>
+
+            <section class="reader-panel">
+                <div class="panel-heading reader-heading">
+                    <div>
+                        <p class="label">Bilinguales Lesen</p>
+                        <h2 id="poemTitle"></h2>
+                    </div>
+                    <span id="moodBadge" class="mood-badge"></span>
+                </div>
+
+                <div class="line-table" id="lineTable"></div>
+            </section>
+
+            <aside class="study-panel">
+                <section class="lookup-box" aria-label="Wort nachschlagen">
+                    <div class="panel-heading">
+                        <p class="label">Nachschlagen</p>
+                        <h2>Wort suchen</h2>
+                    </div>
+                    <div class="lookup-form">
+                        <input id="lookupInput" type="search" placeholder="z.B. Heimat, gefallen, weder">
+                        <button class="secondary-button" id="lookupBtn" type="button">Suchen</button>
+                    </div>
+                    <div class="lookup-result" id="lookupResult">
+                        <p>Klicke ein deutsches Wort in der Übersetzung oder suche hier.</p>
+                    </div>
+                </section>
+
+                <div class="tabs" role="tablist" aria-label="Lernbereiche">
+                    <button class="tab active" type="button" data-tab="grammar">Grammatik</button>
+                    <button class="tab" type="button" data-tab="words">Wortschatz</button>
+                    <button class="tab" type="button" data-tab="reflection">Gedanke</button>
+                </div>
+
+                <div class="tab-panel active" id="grammarPanel"></div>
+                <div class="tab-panel" id="wordsPanel"></div>
+                <div class="tab-panel" id="reflectionPanel"></div>
+            </aside>
+        </section>
+
+        <section class="practice-band" id="wortschatz">
+            <div class="practice-copy">
+                <p class="label">Üben</p>
+                <h2>Mini-Wortkarte</h2>
+                <p>Teste die wichtigsten Wörter aus dem aktuellen Gedicht.</p>
+            </div>
+            <div class="flashcard" id="flashcard">
+                <p id="flashcardWord"></p>
+                <button class="secondary-button" id="flipCardBtn" type="button">Bedeutung zeigen</button>
+                <span id="flashcardAnswer"></span>
+            </div>
+        </section>
+
+        <section class="notes-section" id="notizen">
+            <div class="panel-heading">
+                <p class="label">Mein Lernen</p>
+                <h2>Eigene Notizen</h2>
+            </div>
+            <textarea id="notesInput" rows="6" placeholder="Zum Beispiel: 'weder ... noch' = 既不……也不……"></textarea>
+            <p class="save-status" id="saveStatus">Notizen werden automatisch gespeichert.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Chinesische Poesie auf Deutsch · Lernprojekt von Tao Wang</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
