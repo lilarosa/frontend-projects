@@ -5,27 +5,32 @@
 }
 
 :root {
-  --ink: #181616;
-  --muted: #6c625c;
-  --paper: #faf8f4;
-  --panel: #ffffff;
-  --line: #ded7cf;
-  --sage: #586f60;
-  --rose: #a85e68;
-  --blue: #526b8e;
-  --gold: #b48a4d;
-  --shadow: 0 18px 48px rgba(38, 31, 28, 0.1);
+  --bg: #eef2f3;
+  --surface: #ffffff;
+  --surface-soft: #f7f8f8;
+  --ink: #17201b;
+  --muted: #68736c;
+  --line: #d9e1dc;
+  --green: #2d6a4f;
+  --green-dark: #194533;
+  --blue: #355c7d;
+  --rose: #a35d6a;
+  --gold: #b38543;
+  --shadow: 0 24px 60px rgba(19, 38, 29, 0.16);
 }
 
 body {
+  align-items: center;
   background:
-    linear-gradient(90deg, rgba(24, 22, 22, 0.035) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(24, 22, 22, 0.025) 1px, transparent 1px),
-    var(--paper);
-  background-size: 34px 34px;
+    radial-gradient(circle at top left, rgba(45, 106, 79, 0.18), transparent 34rem),
+    linear-gradient(135deg, #eef5f1 0%, #f8f1ec 100%);
   color: var(--ink);
+  display: flex;
   font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6;
+  justify-content: center;
+  line-height: 1.55;
+  min-height: 100vh;
+  padding: 28px;
 }
 
 a {
@@ -39,278 +44,374 @@ select {
   font: inherit;
 }
 
-.topbar {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  max-width: 1180px;
-  padding: 22px clamp(18px, 5vw, 64px);
+button {
+  cursor: pointer;
 }
 
-.topbar a {
-  color: var(--rose);
-  font-weight: 800;
-}
-
-.topbar span {
-  color: var(--muted);
-}
-
-.app-shell {
-  margin: 0 auto;
-  max-width: 1180px;
-  padding: 18px clamp(18px, 5vw, 64px) 56px;
-}
-
-.hero {
-  align-items: end;
-  display: grid;
-  gap: 28px;
-  grid-template-columns: minmax(0, 1fr) 360px;
-  margin-bottom: 24px;
-}
-
-.eyebrow {
-  color: var(--rose);
-  font-size: 0.78rem;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
-h1 {
-  font-size: clamp(2.6rem, 7vw, 5.4rem);
-  letter-spacing: 0;
-  line-height: 0.98;
-  margin: 10px 0 18px;
-  max-width: 760px;
-}
-
-.lead {
-  color: var(--muted);
-  font-size: 1.08rem;
-  max-width: 700px;
-}
-
-.summary-strip,
-.panel {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid var(--line);
-  border-radius: 8px;
+.phone-shell {
+  background: #101614;
+  border: 10px solid #101614;
+  border-radius: 34px;
   box-shadow: var(--shadow);
-}
-
-.summary-strip {
   display: grid;
-  gap: 1px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  max-width: 460px;
+  min-height: min(860px, calc(100vh - 56px));
   overflow: hidden;
+  width: 100%;
 }
 
-.summary-strip div {
-  background: var(--panel);
+.app-bar {
+  align-items: center;
+  background: var(--surface);
+  display: flex;
+  gap: 18px;
+  padding: 22px 20px 14px;
+}
+
+.app-bar a {
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--green-dark);
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 8px 12px;
+}
+
+.app-bar p,
+.eyebrow,
+.helper-text {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.app-bar h1 {
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.app-screen {
+  background: var(--bg);
+  min-height: 0;
+  overflow: auto;
   padding: 18px;
 }
 
-.summary-strip strong {
+.view {
+  display: none;
+}
+
+.view.active {
   display: block;
-  font-size: 1.7rem;
-  line-height: 1;
 }
 
-.summary-strip span {
-  color: var(--muted);
-  font-size: 0.86rem;
+.view-heading {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 14px;
 }
 
-.workspace {
+.eyebrow {
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 1.45rem;
+  line-height: 1.15;
+  margin-top: 2px;
+}
+
+.form-card,
+.clothing-card,
+.recommendation-result,
+.empty-state {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(34, 48, 40, 0.08);
+}
+
+.form-card {
   display: grid;
-  gap: 18px;
-  grid-template-columns: 260px minmax(0, 1fr) 300px;
-}
-
-.panel {
-  padding: 22px;
-}
-
-.section-heading h2 {
-  font-size: 1.35rem;
-  line-height: 1.2;
-  margin: 4px 0 16px;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 16px;
 }
 
 label {
   color: var(--muted);
-  display: block;
-  font-size: 0.9rem;
-  margin: 14px 0 6px;
+  display: grid;
+  font-size: 0.82rem;
+  font-weight: 700;
+  gap: 6px;
 }
 
 input,
 select {
-  background: #fff;
+  background: var(--surface-soft);
   border: 1px solid var(--line);
-  border-radius: 8px;
-  min-height: 42px;
+  border-radius: 14px;
+  color: var(--ink);
+  min-height: 46px;
   padding: 0 12px;
   width: 100%;
 }
 
+.field-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr;
+}
+
+.upload-row {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.file-picker {
+  align-items: center;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  color: var(--green-dark);
+  cursor: pointer;
+  display: flex;
+  font-weight: 800;
+  justify-content: center;
+  min-height: 46px;
+}
+
+.file-picker input {
+  display: none;
+}
+
 .primary-button,
 .secondary-button,
-#resetBtn {
-  border: 0;
-  border-radius: 8px;
-  cursor: pointer;
+.ghost-button {
+  border-radius: 14px;
   font-weight: 800;
-  min-height: 42px;
+  min-height: 46px;
   padding: 10px 14px;
 }
 
 .primary-button {
-  background: var(--ink);
+  background: var(--green);
+  border: 1px solid var(--green);
   color: #fff;
-  margin-top: 18px;
-  width: 100%;
 }
 
 .secondary-button {
-  background: var(--sage);
+  background: var(--ink);
+  border: 1px solid var(--ink);
   color: #fff;
 }
 
-#resetBtn {
-  background: #f0ece6;
+.ghost-button {
+  background: var(--surface-soft);
   border: 1px solid var(--line);
-  color: var(--ink);
+  color: var(--green-dark);
 }
 
-form {
+.hidden {
+  display: none;
+}
+
+.clothes-list {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
-.outfit-result {
+.clothing-card {
   display: grid;
-  gap: 14px;
+  gap: 12px;
+  grid-template-columns: 86px minmax(0, 1fr) auto;
+  padding: 12px;
 }
 
-.recommendation-note {
-  background: rgba(180, 138, 77, 0.14);
-  border: 1px solid rgba(180, 138, 77, 0.28);
-  border-radius: 8px;
+.thumb {
+  align-items: center;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #e9eee9, #f8f4ef);
+  border: 1px solid var(--line);
+  border-radius: 14px;
   color: var(--muted);
-  padding: 14px;
+  display: flex;
+  font-size: 1.7rem;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.outfit-list {
-  display: grid;
-  gap: 10px;
+.thumb img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 
-.outfit-row,
-.item-card {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  display: grid;
+.clothing-card h3 {
+  font-size: 1rem;
+  line-height: 1.25;
+  margin: 2px 0 6px;
+}
+
+.clothing-card p {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
   gap: 6px;
-  padding: 14px;
+  margin-top: 8px;
 }
 
-.outfit-row {
-  grid-template-columns: 92px minmax(0, 1fr);
-}
-
-.category {
-  color: var(--muted);
-  font-size: 0.82rem;
-  text-transform: uppercase;
-}
-
-.swatch {
-  align-self: start;
+.tag,
+.count-badge {
   border-radius: 999px;
   color: #fff;
   display: inline-flex;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 800;
-  justify-content: center;
-  padding: 4px 9px;
-  width: fit-content;
+  padding: 4px 8px;
 }
 
-.cream {
-  background: #b48a4d;
+.tag.neutral,
+.count-badge {
+  background: var(--green-dark);
 }
 
-.black {
-  background: #181616;
+.cream,
+.beige,
+.white {
+  background: var(--gold);
+}
+
+.black,
+.navy,
+.gray,
+.grey {
+  background: var(--ink);
 }
 
 .blue {
   background: var(--blue);
 }
 
-.rose {
+.rose,
+.pink,
+.red {
   background: var(--rose);
 }
 
 .green {
-  background: var(--sage);
+  background: var(--green);
 }
 
-.catalog-panel {
-  margin-top: 18px;
+.card-actions {
+  display: grid;
+  gap: 8px;
 }
 
-.catalog-heading {
-  align-items: start;
-  display: flex;
-  gap: 14px;
-  justify-content: space-between;
+.icon-button {
+  align-items: center;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--green-dark);
+  display: inline-flex;
+  height: 36px;
+  justify-content: center;
+  width: 36px;
 }
 
-.catalog-grid {
+.compact-form {
+  margin-bottom: 18px;
+}
+
+.recommendation-result {
   display: grid;
   gap: 12px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: 8px;
+  padding: 16px;
 }
 
-.item-card strong {
-  line-height: 1.25;
+.result-row {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 96px minmax(0, 1fr);
 }
 
-.item-card p {
+.result-row strong {
+  color: var(--green-dark);
+}
+
+.result-row span {
   color: var(--muted);
-  font-size: 0.9rem;
 }
 
 .empty-state {
   color: var(--muted);
-  padding: 14px;
+  padding: 16px;
 }
 
-@media (max-width: 980px) {
-  .hero,
-  .workspace,
-  .catalog-grid {
-    grid-template-columns: 1fr;
-  }
+.bottom-nav {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px;
 }
 
-@media (max-width: 640px) {
-  .summary-strip,
-  .outfit-row {
-    grid-template-columns: 1fr;
+.nav-button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 18px;
+  color: var(--muted);
+  display: grid;
+  font-weight: 800;
+  gap: 2px;
+  justify-items: center;
+  min-height: 58px;
+}
+
+.nav-button span {
+  font-size: 1.05rem;
+}
+
+.nav-button.active {
+  background: #e5f0ea;
+  color: var(--green-dark);
+}
+
+@media (max-width: 540px) {
+  body {
+    padding: 0;
   }
 
-  .catalog-heading {
-    display: block;
+  .phone-shell {
+    border: 0;
+    border-radius: 0;
+    min-height: 100vh;
+    max-width: none;
   }
 
-  #resetBtn {
-    margin-top: 12px;
+  .clothing-card {
+    grid-template-columns: 74px minmax(0, 1fr);
+  }
+
+  .card-actions {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .icon-button {
     width: 100%;
   }
 }

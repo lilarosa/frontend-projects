@@ -3,135 +3,140 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Smart Outfit Wardrobe Demo</title>
+  <title>Smart Outfit Demo</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <header class="topbar">
-    <a href="../../index.html">Frontend Projects</a>
-    <span>Smart Outfit Demo</span>
-  </header>
-
-  <main class="app-shell">
-    <section class="hero">
+  <div class="phone-shell">
+    <header class="app-bar">
+      <a href="../../index.html" aria-label="Back to frontend projects">Projects</a>
       <div>
-        <p class="eyebrow">Interactive wardrobe planner</p>
-        <h1>Smart Outfit Wardrobe</h1>
-        <p class="lead">
-          Build a small wardrobe, filter by season and occasion, then generate an outfit
-          recommendation from matching clothes. This demo runs fully in the browser.
-        </p>
+        <p>Flutter concept showcase</p>
+        <h1>Smart Outfit</h1>
       </div>
-      <div class="summary-strip" aria-label="Wardrobe summary">
-        <div>
-          <strong id="itemCount">0</strong>
-          <span>items</span>
-        </div>
-        <div>
-          <strong id="matchCount">0</strong>
-          <span>matches</span>
-        </div>
-        <div>
-          <strong id="favoriteColor">-</strong>
-          <span>top color</span>
-        </div>
-      </div>
-    </section>
+    </header>
 
-    <section class="workspace">
-      <aside class="panel controls-panel">
-        <div class="section-heading">
-          <p class="eyebrow">Context</p>
-          <h2>Recommendation settings</h2>
+    <main class="app-screen">
+      <section class="view active" id="clothesView" aria-labelledby="clothesTitle">
+        <div class="view-heading">
+          <div>
+            <p class="eyebrow">My wardrobe</p>
+            <h2 id="clothesTitle">My Clothes</h2>
+          </div>
+          <button id="reloadBtn" class="ghost-button" type="button">Reload Clothes</button>
         </div>
 
-        <label for="seasonFilter">Season</label>
-        <select id="seasonFilter">
-          <option value="spring">Spring</option>
-          <option value="summer">Summer</option>
-          <option value="autumn">Autumn</option>
-          <option value="winter">Winter</option>
-        </select>
+        <form id="clothingForm" class="form-card">
+          <input id="itemId" type="hidden">
+          <label>
+            Name
+            <input id="itemName" type="text" placeholder="e.g. Cream trench coat" required>
+          </label>
+          <label>
+            Image URL
+            <input id="itemImageUrl" type="url" placeholder="https://example.com/photo.jpg">
+          </label>
 
-        <label for="occasionFilter">Occasion</label>
-        <select id="occasionFilter">
-          <option value="work">Work</option>
-          <option value="casual">Casual</option>
-          <option value="party">Party</option>
-        </select>
+          <div class="upload-row">
+            <label class="file-picker">
+              Pick Image
+              <input id="itemImageFile" type="file" accept="image/*">
+            </label>
+            <button id="uploadBtn" class="secondary-button" type="button">Upload Image</button>
+          </div>
+          <p id="selectedFileName" class="helper-text">No local image selected.</p>
 
-        <label for="colorFilter">Color preference</label>
-        <select id="colorFilter">
-          <option value="any">Any color</option>
-          <option value="cream">Cream</option>
-          <option value="black">Black</option>
-          <option value="blue">Blue</option>
-          <option value="rose">Rose</option>
-          <option value="green">Green</option>
-        </select>
+          <label>
+            Color
+            <input id="itemColor" type="text" placeholder="cream, black, blue..." required>
+          </label>
 
-        <label for="temperatureInput">Temperature</label>
-        <input id="temperatureInput" type="number" min="-10" max="40" value="18">
+          <div class="field-grid">
+            <label>
+              Category
+              <select id="itemCategory">
+                <option value="top">top</option>
+                <option value="bottom">bottom</option>
+                <option value="outerwear">outerwear</option>
+                <option value="dress">dress</option>
+                <option value="shoes">shoes</option>
+              </select>
+            </label>
+            <label>
+              Season
+              <select id="itemSeason">
+                <option value="spring">spring</option>
+                <option value="summer">summer</option>
+                <option value="autumn">autumn</option>
+                <option value="winter">winter</option>
+              </select>
+            </label>
+            <label>
+              Occasion
+              <select id="itemOccasion">
+                <option value="work">work</option>
+                <option value="casual">casual</option>
+                <option value="party">party</option>
+              </select>
+            </label>
+          </div>
 
-        <button id="recommendBtn" class="primary-button" type="button">Generate outfit</button>
-      </aside>
+          <button id="saveBtn" class="primary-button" type="submit">Add Clothing Item</button>
+          <button id="cancelEditBtn" class="ghost-button hidden" type="button">Cancel Editing</button>
+        </form>
 
-      <section class="panel recommendation-panel">
-        <div class="section-heading">
-          <p class="eyebrow">Today</p>
-          <h2>Outfit recommendation</h2>
-        </div>
-        <div id="recommendationResult" class="outfit-result" aria-live="polite"></div>
+        <div id="clothesList" class="clothes-list" aria-live="polite"></div>
       </section>
 
-      <aside class="panel add-panel">
-        <div class="section-heading">
-          <p class="eyebrow">Wardrobe</p>
-          <h2>Add clothing item</h2>
+      <section class="view" id="recommendView" aria-labelledby="recommendTitle">
+        <div class="view-heading">
+          <div>
+            <p class="eyebrow">Outfit engine</p>
+            <h2 id="recommendTitle">Recommendation</h2>
+          </div>
+          <span id="itemCountBadge" class="count-badge">0 items</span>
         </div>
-        <form id="itemForm">
-          <input id="itemName" type="text" placeholder="Item name" required>
-          <select id="itemCategory">
-            <option value="top">Top</option>
-            <option value="bottom">Bottom</option>
-            <option value="outerwear">Outerwear</option>
-            <option value="dress">Dress</option>
-            <option value="shoes">Shoes</option>
-          </select>
-          <select id="itemColor">
-            <option value="cream">Cream</option>
-            <option value="black">Black</option>
-            <option value="blue">Blue</option>
-            <option value="rose">Rose</option>
-            <option value="green">Green</option>
-          </select>
-          <select id="itemSeason">
-            <option value="spring">Spring</option>
-            <option value="summer">Summer</option>
-            <option value="autumn">Autumn</option>
-            <option value="winter">Winter</option>
-          </select>
-          <select id="itemOccasion">
-            <option value="work">Work</option>
-            <option value="casual">Casual</option>
-            <option value="party">Party</option>
-          </select>
-          <button class="secondary-button" type="submit">Add item</button>
-        </form>
-      </aside>
-    </section>
 
-    <section class="panel catalog-panel">
-      <div class="section-heading catalog-heading">
-        <div>
-          <p class="eyebrow">Catalog</p>
-          <h2>Your wardrobe</h2>
-        </div>
-        <button id="resetBtn" type="button">Reset demo data</button>
-      </div>
-      <div id="catalogGrid" class="catalog-grid"></div>
-    </section>
-  </main>
+        <form id="recommendForm" class="form-card compact-form">
+          <label>
+            Occasion
+            <select id="recommendOccasion">
+              <option value="work">work</option>
+              <option value="casual">casual</option>
+              <option value="party">party</option>
+            </select>
+          </label>
+          <label>
+            Season
+            <select id="recommendSeason">
+              <option value="spring">spring</option>
+              <option value="summer">summer</option>
+              <option value="autumn">autumn</option>
+              <option value="winter">winter</option>
+            </select>
+          </label>
+          <label>
+            Temperature
+            <input id="recommendTemperature" type="number" value="12" min="-20" max="45" required>
+          </label>
+          <button class="primary-button" type="submit">Get Recommendation</button>
+        </form>
+
+        <div id="recommendationResult" class="recommendation-result" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Smart Outfit views">
+      <button class="nav-button active" type="button" data-view="clothesView">
+        <span>▣</span>
+        Clothes
+      </button>
+      <button class="nav-button" type="button" data-view="recommendView">
+        <span>✦</span>
+        Recommend
+      </button>
+    </nav>
+  </div>
 
   <script src="./app.js"></script>
 </body>
