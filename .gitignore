@@ -1,0 +1,12 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+# Dependencies, local configuration and temporary outputs
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+*.tmp
