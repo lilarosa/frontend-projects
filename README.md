@@ -14,6 +14,7 @@ Web-Projekte von Tao: Sprache lernen, Alltag vereinfachen und eigene Ideen auspr
 | **AP1 Study App** | Lernthemen, Quiz und Wiederholung organisieren | Lernwerkzeug | [Demo](https://lilarosa.github.io/frontend-projects/projects/04_ap1-study-app/) · [Code](projects/04_ap1-study-app/) |
 | **Chinese Poetry in German** | Chinesische Gedichte mit deutschen Erläuterungen lesen | Web-Lernprojekt | [Demo](https://lilarosa.github.io/frontend-projects/projects/05_chinese-poetry-de/) · [Code](projects/05_chinese-poetry-de/) |
 | **Smart Outfit Showcase** | Die Idee eines digitalen Kleiderschranks erkunden | Statischer Prototyp | [Demo](https://lilarosa.github.io/frontend-projects/projects/06_smart-outfit/) · [Code](projects/06_smart-outfit/) |
+| **Dream Aquarium** | Fische mit Maus oder Handgesten steuern | Interaktive Web-Demo | [Demo](https://lilarosa.github.io/frontend-projects/projects/07_dream-aquarium/) · [Code](projects/07_dream-aquarium/) |
 
 ## Ein Blick in die Projekte
 
