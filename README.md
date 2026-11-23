@@ -15,6 +15,7 @@ Web-Projekte von Tao: Sprache lernen, Alltag vereinfachen und eigene Ideen auspr
 | **Chinese Poetry in German** | Chinesische Gedichte mit deutschen Erläuterungen lesen | Web-Lernprojekt | [Demo](https://lilarosa.github.io/frontend-projects/projects/05_chinese-poetry-de/) · [Code](projects/05_chinese-poetry-de/) |
 | **Smart Outfit Showcase** | Die Idee eines digitalen Kleiderschranks erkunden | Statischer Prototyp | [Demo](https://lilarosa.github.io/frontend-projects/projects/06_smart-outfit/) · [Code](projects/06_smart-outfit/) |
 | **Dream Aquarium** | Fische mit Maus oder Handgesten steuern | Interaktive Web-Demo | [Demo](https://lilarosa.github.io/frontend-projects/projects/07_dream-aquarium/) · [Code](projects/07_dream-aquarium/) |
+| **Moonlight Gesture Stage** | Sailor Moons Posen und Lichteffekte per Handgeste auslösen | Interaktive Web-Demo | [Demo](https://lilarosa.github.io/frontend-projects/projects/08_moonlight-gesture-stage/) · [Code](projects/08_moonlight-gesture-stage/) |
 
 ## Ein Blick in die Projekte
 
